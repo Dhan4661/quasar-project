@@ -1,35 +1,87 @@
 <template>
-<div>
-  Register User
-</div>
-<input type="text" placeholder="UserName" name="userName" :value="userName">
-<br>
-<label for="gender">Gender</label>
-<input type="radio" class="male" data-testid="male" id="gender" placeholder="Gender" name="male" :value="male">
-<input type="radio" data-testid="female" id="gender" placeholder="Gender" name="male" :value="female">
+  <div>Register User</div>
+  <label for="UserName">UserName</label>
+  <input
+    type="text"
+    placeholder="UserName"
+    id="UserName"
+    name="UserName"
+    :value="UserName"
+  />
+  <br />
 
+  <label for="Email">Email</label>
+  <input type="text" id="Email" name="Email" :value="Email" />
+  <br />
 
+  <label for="Password">Password</label>
+  <input type="text" id="Password" name="Password" :value="Password" />
+  <br />
 
+  <!-- <label for="gender">Gender</label>
+  <input
+    type="radio"
+    class="male"
+    data-testid="male"
+    id="gender"
+    placeholder="Gender"
+    name="male"
+    :value="male"
+  />
+  <input
+    type="radio"
+    data-testid="female"
+    id="gender"
+    placeholder="Gender"
+    name="male"
+    :value="female"
+  /> -->
+  {{ model }}
+  <q-input
+    type="text"
+    placeholder="Test"
+    v-model="model.test"
+    data-testId="test"
+  >
+  </q-input>
+  <q-toggle
+    v-model="model.accept"
+    @update:modelValue="disableSubmitButton(model.accept)"
+    label="I accept the terms and conditions"
+    data-testId="accept"
+  />
+  <q-btn
+    label="SignUp"
+    :disabled="buttondisabled"
+    type="submit"
+    @click="onSubmit()"
+    data-testId="signup"
+  />
 </template>
 
 <script setup lang="ts">
-import {  ref } from 'vue';
+import { ref, reactive } from 'vue';
 
-const userName = ref(null)
-// export default defineComponent({
-//   name: 'RegisterUser',
-//   components: {
-//     //VForm: Form,
-//   },
+const UserName = ref(null);
+const Email = ref(null);
+const Password = ref(null);
+const model = reactive({
+  test: null,
+  accept: false,
+});
+let buttondisabled = ref(true);
 
-//   setup() {
-//     const name = ref(null);
+const disableSubmitButton = (accept: boolean): void => {
+  if (accept == true) {
+    buttondisabled.value = false;
+  }else{
+    buttondisabled.value = true;
+  }
+};
 
-//     return {
-//       name,
-//     };
-//   },
-// });
+const onSubmit = (): void => {
+  console.log('submit');
+};
 </script>
 
 <style>
