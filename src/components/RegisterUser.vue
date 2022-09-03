@@ -73,6 +73,7 @@
 
 <script setup lang="ts">
 import { ref, reactive } from 'vue';
+import axios from 'axios';
 
 const UserName = ref(null);
 const Email = ref(null);
@@ -97,7 +98,9 @@ const disableSubmitButton = (accept: boolean): void => {
 
 const onSubmit = (): void => {
   console.log('submit');
+  axios.post('*/api/1.0/users',{});
 };
+ 
 </script>
 
 <style>
