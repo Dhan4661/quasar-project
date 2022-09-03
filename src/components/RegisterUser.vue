@@ -36,19 +36,29 @@
     name="male"
     :value="female"
   /> -->
-  {{ model }}
+  <q-card style="margin: 100px;" class="p10">
   <q-input
     type="text"
     placeholder="Test"
     v-model="model.test"
     data-testId="test"
+    class="p10"
   >
   </q-input>
+  <q-select
+  v-model="model.selectTest"
+  :options="testOptions"
+  data-testId="selectTest"
+  class="p10"
+  >
+  </q-select>
+
   <q-toggle
     v-model="model.accept"
     @update:modelValue="disableSubmitButton(model.accept)"
     label="I accept the terms and conditions"
     data-testId="accept"
+    class="p10"
   />
   <q-btn
     label="SignUp"
@@ -56,7 +66,9 @@
     type="submit"
     @click="onSubmit()"
     data-testId="signup"
+    class="p10"
   />
+  </q-card>
 </template>
 
 <script setup lang="ts">
@@ -67,9 +79,13 @@ const Email = ref(null);
 const Password = ref(null);
 const model = reactive({
   test: null,
+  selectTest: 'Google',
   accept: false,
 });
 let buttondisabled = ref(true);
+const testOptions = ref([
+        'Google', 'Facebook', 'Twitter', 'Apple', 'Oracle'
+      ]);
 
 const disableSubmitButton = (accept: boolean): void => {
   if (accept == true) {
@@ -92,5 +108,8 @@ const onSubmit = (): void => {
   letter-spacing: 0.00735em;
   text-align: center;
   padding-top: 10px;
+}
+.p10 {
+  padding : 10px;
 }
 </style>
