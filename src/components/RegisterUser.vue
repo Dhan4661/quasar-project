@@ -7,6 +7,7 @@
     id="UserName"
     name="UserName"
     :value="UserName"
+    data-testId="UserName"
   />
   <br />
 
@@ -36,38 +37,38 @@
     name="male"
     :value="female"
   /> -->
-  <q-card style="margin: 100px;" class="p10">
-  <q-input
-    type="text"
-    placeholder="Test"
-    v-model="model.test"
-    data-testId="test"
-    class="p10"
-  >
-  </q-input>
-  <q-select
-  v-model="model.selectTest"
-  :options="testOptions"
-  data-testId="selectTest"
-  class="p10"
-  >
-  </q-select>
+  <q-card style="margin: 100px" class="p10">
+    <q-input
+      type="text"
+      placeholder="Test"
+      v-model="model.test"
+      data-testId="test"
+      class="p10"
+    >
+    </q-input>
+    <q-select
+      v-model="model.selectTest"
+      :options="testOptions"
+      data-testId="selectTest"
+      class="p10"
+    >
+    </q-select>
 
-  <q-toggle
-    v-model="model.accept"
-    @update:modelValue="disableSubmitButton(model.accept)"
-    label="I accept the terms and conditions"
-    data-testId="accept"
-    class="p10"
-  />
-  <q-btn
-    label="SignUp"
-    :disabled="buttondisabled"
-    type="submit"
-    @click="onSubmit()"
-    data-testId="signup"
-    class="p10"
-  />
+    <q-toggle
+      v-model="model.accept"
+      @update:modelValue="disableSubmitButton(model.accept)"
+      label="I accept the terms and conditions"
+      data-testId="accept"
+      class="p10"
+    />
+    <q-btn
+      label="SignUp"
+      :disabled="buttondisabled"
+      type="submit"
+      @click="onSubmit()"
+      data-testId="signup"
+      class="p10"
+    />
   </q-card>
 </template>
 
@@ -84,23 +85,28 @@ const model = reactive({
   accept: false,
 });
 let buttondisabled = ref(true);
-const testOptions = ref([
-        'Google', 'Facebook', 'Twitter', 'Apple', 'Oracle'
-      ]);
+const testOptions = ref(['Google', 'Facebook', 'Twitter', 'Apple', 'Oracle']);
 
 const disableSubmitButton = (accept: boolean): void => {
   if (accept == true) {
     buttondisabled.value = false;
-  }else{
+  } else {
     buttondisabled.value = true;
   }
 };
 
 const onSubmit = (): void => {
+  debugger;
+  model.test = 'Hello World!',
+  model.selectTest = 'Google';
+  model.accept = true;
   console.log('submit');
-  axios.post('*/api/1.0/users',{});
+  axios.post('/api/1.0/users', {
+    test: model.test,
+    selectTest: model.selectTest,
+    accept: model.accept,
+  });
 };
- 
 </script>
 
 <style>
@@ -113,6 +119,6 @@ const onSubmit = (): void => {
   padding-top: 10px;
 }
 .p10 {
-  padding : 10px;
+  padding: 10px;
 }
 </style>

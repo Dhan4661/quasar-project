@@ -113,27 +113,68 @@ describe('interaction', () => {
   });
 });
 
-describe('mocking', () => {
+describe('mocking without user event', () => {
   it('sends inputs to backend after clicking the button', async () => {
     render(RegisterUser);
-    const test = screen.getByTestId('test');
-    const accept = screen.getByTestId('accept');
-    const selectTest = screen.getByTestId('selectTest');
-    //const signup = screen.getByTestId('signup');
-
-    await userEvent.type(test, 'Hello World!');
-    await userEvent.type(accept, 'false');
-    await userEvent.type(selectTest, 'Google');
+    const signup = screen.getByTestId('signup');
 
     const mockFn = jest.fn();
     axios.post = mockFn;
+
+    await userEvent.click(signup);
 
     const firstCall = mockFn.mock.calls[0];
 
     const body = firstCall[1];
     expect(body).toEqual({
-      test: 'Hello world!',
-      accept: 'false',
+      test: 'Hello World!',
+      accept: true,
+      selectTest: 'Google',
+    });
+  });
+});
+
+describe('mocking with userEvent', () => {
+  it('sends inputs to backend after clicking the button', async () => {
+    render(RegisterUser);
+    const test = screen.getByTestId('test');
+    const UserName = screen.getByTestId('UserName');
+    const accept = screen.getByTestId('accept');
+    const selectTest = screen.getByTestId('selectTest');
+    const signup = screen.getByTestId('signup');
+
+    debugger;
+    await userEvent.type(UserName, 'Hello World!');
+    await userEvent.type(accept, 'false');
+
+    console.log(screen.getByTestId('selectTest'))
+    userEvent.selectOptions(selectTest, ['Facebook'])
+    selectTest.getAttribute('options');
+    console.log(selectTest.getAttribute('options'));
+    //expect(screen.getByRole('option', {name: 'A'}).selected).toBe(true)
+
+    // expect(test).toHaveValue('Hello, World!');
+    // expect(accept).toHaveValue('false');
+    // expect(selectTest).toHaveValue('Google');
+
+    debugger;
+
+    userEvent.clear(UserName);
+    expect(UserName).toHaveValue('')
+    console.log(UserName.getAttribute('value'));
+
+    const mockFn = jest.fn();
+    axios.post = mockFn;
+
+    await userEvent.click(signup);
+
+    const firstCall = mockFn.mock.calls[0];
+
+    debugger;
+    const body = firstCall[1];
+    expect(body).toEqual({
+      test: 'Hello World!',
+      accept: true,
       selectTest: 'Google',
     });
   });
