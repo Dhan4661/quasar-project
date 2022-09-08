@@ -3,6 +3,7 @@ import { render, screen } from '@testing-library/vue';
 import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event';
 import axios from 'axios';
+import 'whatwg-fetch'
 
 describe('Register User', () => {
   it('username text content', () => {
@@ -113,19 +114,17 @@ describe('interaction', () => {
   });
 });
 
-describe('mocking without user event', () => {
+describe('mocking and making API request without userEvent.type', () => {
   it('sends inputs to backend after clicking the button', async () => {
     render(RegisterUser);
     const signup = screen.getByTestId('signup');
-
     const mockFn = jest.fn();
-    axios.post = mockFn;
-
+    //axios.post = mockFn;
+    window.fetch = mockFn;
     await userEvent.click(signup);
-
     const firstCall = mockFn.mock.calls[0];
-
-    const body = firstCall[1];
+    //const body = firstCall[1];
+    const body = JSON.parse(firstCall[1].body);
     expect(body).toEqual({
       test: 'Hello World!',
       accept: true,
@@ -134,7 +133,8 @@ describe('mocking without user event', () => {
   });
 });
 
-describe('mocking with userEvent', () => {
+/* Skipping the test. */
+describe.skip('mocking with userEvent', () => {
   it('sends inputs to backend after clicking the button', async () => {
     render(RegisterUser);
     const test = screen.getByTestId('test');
@@ -147,20 +147,20 @@ describe('mocking with userEvent', () => {
     await userEvent.type(UserName, 'Hello World!');
     await userEvent.type(accept, 'false');
 
-    console.log(screen.getByTestId('selectTest'))
-    userEvent.selectOptions(selectTest, ['Facebook'])
+    console.log(screen.getByTestId('selectTest'));
+    userEvent.selectOptions(selectTest, ['Facebook']);
     selectTest.getAttribute('options');
     console.log(selectTest.getAttribute('options'));
     //expect(screen.getByRole('option', {name: 'A'}).selected).toBe(true)
 
-    // expect(test).toHaveValue('Hello, World!');
-    // expect(accept).toHaveValue('false');
-    // expect(selectTest).toHaveValue('Google');
+    expect(test).toHaveValue('Hello, World!');
+    expect(accept).toHaveValue('false');
+    expect(selectTest).toHaveValue('Google');
 
     debugger;
 
     userEvent.clear(UserName);
-    expect(UserName).toHaveValue('')
+    expect(UserName).toHaveValue('');
     console.log(UserName.getAttribute('value'));
 
     const mockFn = jest.fn();

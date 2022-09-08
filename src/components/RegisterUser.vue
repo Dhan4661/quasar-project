@@ -95,16 +95,35 @@ const disableSubmitButton = (accept: boolean): void => {
   }
 };
 
+// /* For making API request */
+// const onSubmit = (): void => {
+//   debugger;
+//   /* dummy data for test purposes */
+//   /*
+//   model.test = 'Hello World!',
+//   model.selectTest = 'Google';
+//   model.accept = true;
+//   console.log('submit');
+//   */
+//   axios.post('/api/1.0/users', {
+//     test: model.test,
+//     selectTest: model.selectTest,
+//     accept: model.accept,
+//   });
+// };
+
+/* For mocking */
 const onSubmit = (): void => {
   debugger;
-  model.test = 'Hello World!',
-  model.selectTest = 'Google';
+  /* dummy data for test purposes */
+
+  (model.test = 'Hello World!'), (model.selectTest = 'Google');
   model.accept = true;
-  console.log('submit');
-  axios.post('/api/1.0/users', {
-    test: model.test,
-    selectTest: model.selectTest,
-    accept: model.accept,
+
+  fetch('/api/1,0/users', {
+    method: 'POST',
+    body: JSON.stringify(model),
+    headers: { 'Content-Type': 'application/json' },
   });
 };
 </script>
