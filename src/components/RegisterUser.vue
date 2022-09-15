@@ -110,6 +110,15 @@ const disableSubmitButton = (accept: boolean): void => {
 //     selectTest: model.selectTest,
 //     accept: model.accept,
 //   });
+
+// /* for axios with host */
+// /* with proxying host details in quasar.config.js file then you can right same as above */
+//   axios.post('http://localhost:8080/api/1.0/users', {
+//     test: model.test,
+//     selectTest: model.selectTest,
+//     accept: model.accept,
+//   });
+
 // };
 
 /* For mocking */
