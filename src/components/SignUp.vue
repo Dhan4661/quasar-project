@@ -26,33 +26,42 @@
               <span> NEW TO FABBOOK REGISTER HERE</span>
             </div>
           </q-card-header>
-          <q-divider></q-divider>
           <q-card-section>
-            <v-form @submit="onSubmit" class="q-gutter-md">
+            <v-form
+              @submit="onSubmit"
+              class="q-gutter-md"
+              :validation-schema="signupSchema"
+            >
               <q-input-with-validation
                 label="Your name *"
-                hint="Name and surname"
+                name="name"
+                dense
                 data-testId="name"
               />
               <q-input-with-validation
                 type="email"
+                name="email"
+                dense
                 label="Your Email Address*"
-                hint="example@gmail.com"
                 data-testId="email"
               />
               <q-input-with-validation
                 type="number"
+                name="phoneNumber"
+                dense
                 label="Your Contact Number *"
                 data-testId="number"
               />
 
               <q-input-with-validation
                 type="number"
+                name="age"
+                dense
                 label="Your age *"
                 data-testId="age"
               />
 
-              <q-select
+              <!-- <q-select
                 :v-model="gender"
                 label="Gender"
                 data-testId="gender"
@@ -60,18 +69,21 @@
                 :option-label="name"
                 :option-value="id"
               >
-              </q-select>
+              </q-select> -->
 
               <q-toggle
-                v-model="accept"
+                v-model="value"
+                name="accept"
+                checked-icon="check"
+                unchecked-icon="clear"
                 label="I accept the terms and conditions"
                 data-testId="accept"
+                :error="errorMessage"
               />
+              <div style="color: red">{{ errorMessage }}</div>
 
               <div>
-                <q-btn @click="onSubmit" type="submit" color="primary"
-                  >Submit</q-btn
-                >
+                <q-btn type="submit" color="primary">Submit</q-btn>
                 <!-- <q-btn
                   label="Reset"
                   type="reset"
@@ -93,16 +105,16 @@ import { useStore } from 'src/store';
 import { defineComponent, ref } from 'vue';
 import { useRouter } from 'vue-router';
 
-//import { useQuasar } from 'quasar';
-//import * as yup from 'yup';
-//import { Form } from 'vee-validate';
+import { useQuasar } from 'quasar';
+import * as yup from 'yup';
+import { Form as VForm, useField } from 'vee-validate';
 import QInputWithValidation from '../components/QInputWithValidation.vue';
 
 export default defineComponent({
   name: 'SignUp',
   components: {
     QInputWithValidation,
-    //VForm: Form,
+    VForm,
   },
 
   setup() {
@@ -110,46 +122,69 @@ export default defineComponent({
     const email = ref(null);
     const phoneNumber = ref(null);
     const age = ref(null);
+
     const accept = ref(false);
     const router = useRouter();
     const store = useStore();
-    //const $q = useQuasar();
-    // const schema = yup.object({
-    //   password: yup.string().required('Please enter your password'),
-    //   emailAddress: yup
-    //     .string()
-    //     .required('Please enter your email address')
-    //     .email('Please enter a valid email address'),
-    // });
+    //const genderList = ref(['Male', 'Female', 'Other']);
+
+    const signupSchema = yup.object({
+      name: yup.string().required('Name is required'),
+      email: yup
+        .string()
+        .required('Email is required')
+        .email('Please enter a valid email address'),
+      phoneNumber: yup.number().required('Phone number is required'),
+      age: yup.string().required('Age is required'),
+    });
+
+    const q = useQuasar();
+
+    const { errorMessage, value } = useField(
+      'accept',
+      yup
+        .boolean()
+        .test(
+          'accept',
+          'The terms and conditions must be accepted.',
+          (value) => {
+            if (value == true) {
+              return true;
+            }
+            return false;
+          }
+        )
+    );
 
     return {
       name,
       email,
       phoneNumber,
       age,
+      q,
+      errorMessage,
       accept,
+      //genderList,
+      signupSchema,
+      value,
       //schema,
       onSubmit() {
         debugger;
-        if (accept.value !== true) {
-          //window.alert('You need to accept the license and terms first');
-        } else {
-          //window.alert('Submitted sucessfully');
-          void router.push({ name: 'Login' });
+        //window.alert('Submitted sucessfully');
+        void router.push({ name: 'Login' });
 
-          // store
-          store.dispatch('auth/REGISTER', name).then(
-            () => {
-              window.alert('Submitted sucessfully');
+        // store
+        store.dispatch('auth/REGISTER', name).then(
+          () => {
+            window.alert('Submitted sucessfully');
 
-              void router.push({ name: 'Login' });
-            },
-            (error) => {
-              console.log(error);
-              window.alert('You need to accept the license and terms first');
-            }
-          );
-        }
+            void router.push({ name: 'Login' });
+          },
+          (error) => {
+            console.log(error);
+            window.alert('You need to accept the license and terms first');
+          }
+        );
       },
     };
   },
