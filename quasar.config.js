@@ -74,22 +74,22 @@ module.exports = configure(function (ctx) {
       // "chain" is a webpack-chain object https://github.com/neutrinojs/webpack-chain
       // chainWebpack (/* chain */) {}
 
-      env: {
-        API_URL: 'https://testapi.servicefoodsonline.co.nz/web/',
-        API_VERSION: 'v1',
-        CHANNEL: '0',
-        APP_KEY: 'DebugMode',
-        APP_VERSION: '1.0',
-        FIREBASE_API_KEY: 'AIzaSyByHIgdqWezZvqv0w0mRe0p-m4uoE24Gto',
-        FIREBASE_AUTH_DOMAIN: 'service-foods-ecommerce-dev.firebaseapp.com',
-        FIREBASE_PROJECT_ID: 'service-foods-ecommerce-dev',
-        FIREBASE_STORAGE_BUCKET: 'service-foods-ecommerce-dev.appspot.com',
-        FIREBASE_MESSAGING_SENDER_ID: '740712790074',
-        FIREBASE_APP_ID: '1:740712790074:web:490d59a820116388931d03',
-        RECAPTCHA_SITE_KEY: '6LdPmOUeAAAAAJNIWkiya3nl7QbSdXfu1uAccv1r',
-        RECAPTCHA_SECRET_KEY: '6LdPmOUeAAAAAHqknWGzNAGzPwUEqwqRIEUFEMaR',
-        ...require('dotenv').config().parsed,
-      },
+      // env: {
+      //   API_URL: 'https://testapi.servicefoodsonline.co.nz/web/',
+      //   API_VERSION: 'v1',
+      //   CHANNEL: '0',
+      //   APP_KEY: 'DebugMode',
+      //   APP_VERSION: '1.0',
+      //   FIREBASE_API_KEY: 'AIzaSyByHIgdqWezZvqv0w0mRe0p-m4uoE24Gto',
+      //   FIREBASE_AUTH_DOMAIN: 'service-foods-ecommerce-dev.firebaseapp.com',
+      //   FIREBASE_PROJECT_ID: 'service-foods-ecommerce-dev',
+      //   FIREBASE_STORAGE_BUCKET: 'service-foods-ecommerce-dev.appspot.com',
+      //   FIREBASE_MESSAGING_SENDER_ID: '740712790074',
+      //   FIREBASE_APP_ID: '1:740712790074:web:490d59a820116388931d03',
+      //   RECAPTCHA_SITE_KEY: '6LdPmOUeAAAAAJNIWkiya3nl7QbSdXfu1uAccv1r',
+      //   RECAPTCHA_SECRET_KEY: '6LdPmOUeAAAAAHqknWGzNAGzPwUEqwqRIEUFEMaR',
+      //   ...require('dotenv').config().parsed,
+      // },
     },
 
     // Full list of options: https://v2.quasar.dev/quasar-cli-webpack/quasar-config-js#Property%3A-devServer
