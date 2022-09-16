@@ -1,6 +1,181 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1661925479325" clover="3.2.0">
-  <project timestamp="1661925479325" name="All files">
-    <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0" elements="0" coveredelements="0" complexity="0" loc="0" ncloc="0" packages="0" files="0" classes="0"/>
+<coverage generated="1663217181815" clover="3.2.0">
+  <project timestamp="1663217181815" name="All files">
+    <metrics statements="127" coveredstatements="76" conditionals="8" coveredconditionals="4" methods="46" coveredmethods="5" elements="181" coveredelements="85" complexity="0" loc="127" ncloc="127" packages="4" files="12" classes="12"/>
+    <package name="boot">
+      <metrics statements="7" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+      <file name="axios.ts" path="C:\xampp\htdocs\quasar-project\src\boot\axios.ts">
+        <metrics statements="7" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
+        <line num="30" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="components">
+      <metrics statements="40" coveredstatements="29" conditionals="4" coveredconditionals="0" methods="6" coveredmethods="2"/>
+      <file name="QInputWithValidation.vue" path="C:/xampp/htdocs/quasar-project/src/components/QInputWithValidation.vue">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="31" count="2" type="stmt"/>
+        <line num="61" count="5" type="stmt"/>
+        <line num="62" count="5" type="stmt"/>
+      </file>
+      <file name="RegisterUser.vue" path="C:/xampp/htdocs/quasar-project/src/components/RegisterUser.vue">
+        <metrics statements="16" coveredstatements="13" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="1"/>
+        <line num="76" count="1" type="stmt"/>
+        <line num="79" count="11" type="stmt"/>
+        <line num="80" count="11" type="stmt"/>
+        <line num="81" count="11" type="stmt"/>
+        <line num="82" count="11" type="stmt"/>
+        <line num="87" count="11" type="stmt"/>
+        <line num="88" count="11" type="stmt"/>
+        <line num="90" count="11" type="stmt"/>
+        <line num="91" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="92" count="0" type="stmt"/>
+        <line num="94" count="0" type="stmt"/>
+        <line num="116" count="11" type="stmt"/>
+        <line num="117" count="1" type="stmt"/>
+        <line num="120" count="1" type="stmt"/>
+        <line num="121" count="1" type="stmt"/>
+        <line num="123" count="1" type="stmt"/>
+      </file>
+      <file name="SignUp.vue" path="C:\xampp\htdocs\quasar-project\src\components\SignUp.vue">
+        <metrics statements="21" coveredstatements="13" conditionals="2" coveredconditionals="0" methods="4" coveredmethods="1"/>
+        <line num="92" count="1" type="stmt"/>
+        <line num="93" count="1" type="stmt"/>
+        <line num="94" count="1" type="stmt"/>
+        <line num="99" count="1" type="stmt"/>
+        <line num="101" count="1" type="stmt"/>
+        <line num="109" count="1" type="stmt"/>
+        <line num="110" count="1" type="stmt"/>
+        <line num="111" count="1" type="stmt"/>
+        <line num="112" count="1" type="stmt"/>
+        <line num="113" count="1" type="stmt"/>
+        <line num="114" count="1" type="stmt"/>
+        <line num="115" count="1" type="stmt"/>
+        <line num="125" count="1" type="stmt"/>
+        <line num="133" count="0" type="stmt"/>
+        <line num="134" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="138" count="0" type="stmt"/>
+        <line num="141" count="0" type="stmt"/>
+        <line num="143" count="0" type="stmt"/>
+        <line num="145" count="0" type="stmt"/>
+        <line num="148" count="0" type="stmt"/>
+        <line num="149" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="store">
+      <metrics statements="9" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
+      <file name="index.ts" path="C:\xampp\htdocs\quasar-project\src\store\index.ts">
+        <metrics statements="9" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="39" count="1" type="stmt"/>
+        <line num="47" count="1" type="stmt"/>
+        <line num="48" count="0" type="stmt"/>
+        <line num="59" count="0" type="stmt"/>
+        <line num="62" count="1" type="stmt"/>
+        <line num="63" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="store.auth">
+      <metrics statements="71" coveredstatements="35" conditionals="4" coveredconditionals="4" methods="37" coveredmethods="2"/>
+      <file name="action-types.ts" path="C:\xampp\htdocs\quasar-project\src\store\auth\action-types.ts">
+        <metrics statements="10" coveredstatements="10" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <line num="2" count="1" type="cond" truecount="2" falsecount="0"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+      </file>
+      <file name="actions.ts" path="C:\xampp\htdocs\quasar-project\src\store\auth\actions.ts">
+        <metrics statements="38" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="34" coveredmethods="0"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="68" count="1" type="stmt"/>
+        <line num="70" count="0" type="stmt"/>
+        <line num="71" count="0" type="stmt"/>
+        <line num="74" count="0" type="stmt"/>
+        <line num="77" count="0" type="stmt"/>
+        <line num="85" count="0" type="stmt"/>
+        <line num="87" count="0" type="stmt"/>
+        <line num="94" count="0" type="stmt"/>
+        <line num="95" count="0" type="stmt"/>
+        <line num="98" count="0" type="stmt"/>
+        <line num="101" count="0" type="stmt"/>
+        <line num="109" count="0" type="stmt"/>
+        <line num="110" count="0" type="stmt"/>
+        <line num="114" count="0" type="stmt"/>
+        <line num="118" count="0" type="stmt"/>
+        <line num="129" count="0" type="stmt"/>
+        <line num="130" count="0" type="stmt"/>
+        <line num="136" count="0" type="stmt"/>
+        <line num="139" count="0" type="stmt"/>
+        <line num="147" count="0" type="stmt"/>
+        <line num="148" count="0" type="stmt"/>
+        <line num="152" count="0" type="stmt"/>
+        <line num="156" count="0" type="stmt"/>
+        <line num="164" count="0" type="stmt"/>
+        <line num="165" count="0" type="stmt"/>
+        <line num="171" count="0" type="stmt"/>
+        <line num="175" count="0" type="stmt"/>
+        <line num="180" count="0" type="stmt"/>
+        <line num="181" count="0" type="stmt"/>
+        <line num="184" count="0" type="stmt"/>
+        <line num="187" count="0" type="stmt"/>
+        <line num="194" count="0" type="stmt"/>
+        <line num="195" count="0" type="stmt"/>
+        <line num="198" count="0" type="stmt"/>
+        <line num="201" count="0" type="stmt"/>
+        <line num="206" count="1" type="stmt"/>
+      </file>
+      <file name="getters.ts" path="C:\xampp\htdocs\quasar-project\src\store\auth\getters.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+      </file>
+      <file name="index.ts" path="C:\xampp\htdocs\quasar-project\src\store\auth\index.ts">
+        <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+      </file>
+      <file name="mutation-types.ts" path="C:\xampp\htdocs\quasar-project\src\store\auth\mutation-types.ts">
+        <metrics statements="9" coveredstatements="9" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <line num="2" count="1" type="cond" truecount="2" falsecount="0"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+      </file>
+      <file name="mutations.ts" path="C:\xampp\htdocs\quasar-project\src\store\auth\mutations.ts">
+        <metrics statements="5" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
+      </file>
+      <file name="state.ts" path="C:\xampp\htdocs\quasar-project\src\store\auth\state.ts">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="3" count="1" type="stmt"/>
+      </file>
+    </package>
   </project>
 </coverage>
