@@ -11,7 +11,7 @@
           </router-link>
         </q-toolbar-title>
         <div>
-          <a style="color: aliceblue; text-decoration: none" href="#/Login"> Login </a>
+          <a style="color: aliceblue; text-decoration: none" href="#/Register"> SignUp </a>
         </div>
       </q-toolbar>
     </q-header>
