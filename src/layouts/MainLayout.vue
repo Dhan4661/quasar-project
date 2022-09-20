@@ -27,10 +27,10 @@
           <q-card-header> </q-card-header>
           <q-divider></q-divider>
           <q-card-section>
-            <img src="fb.svg" alt="" />
-            <div>
+            <div style="font-size:30px">
               Fabbook helps you connect and share with the people in your life.
             </div>
+            <HomepageImage/>
           </q-card-section>
         </q-card>
       </div>
@@ -41,8 +41,12 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import HomepageImage from  '../components/HomepageImage.vue';
 
 export default defineComponent({
   name: 'MainLayout',
+  components: {
+    HomepageImage,
+  }
 });
 </script>

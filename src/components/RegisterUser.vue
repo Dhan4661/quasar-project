@@ -98,12 +98,10 @@ const disableSubmitButton = (accept: boolean): void => {
 /* For making API request */
 const onSubmit = (): void => {
   /* dummy data for test purposes */
-  /*
-  model.test = 'Hello World!',
-  model.selectTest = 'Google';
+
+  (model.test = 'Hello World!'), (model.selectTest = 'Google');
   model.accept = true;
-  console.log('submit');
-  */
+
   axios.post('/api/1.0/users', {
     test: model.test,
     selectTest: model.selectTest,

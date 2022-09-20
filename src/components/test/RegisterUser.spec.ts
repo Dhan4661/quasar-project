@@ -119,12 +119,14 @@ describe('mocking and making API request without userEvent.type', () => {
     render(RegisterUser);
     const signup = screen.getByTestId('signup');
     const mockFn = jest.fn();
-    //axios.post = mockFn;
-    window.fetch = mockFn;
+
+    // if axios then use axios.post and if fetch then use window.fetch
+    axios.post = mockFn;
+    //window.fetch = mockFn;
     await userEvent.click(signup);
     const firstCall = mockFn.mock.calls[0];
-    //const body = firstCall[1];
-    const body = JSON.parse(firstCall[1].body);
+    const body = firstCall[1];
+    //const body = JSON.parse(firstCall[1].body);
     expect(body).toEqual({
       test: 'Hello World!',
       accept: true,
