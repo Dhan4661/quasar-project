@@ -10,4 +10,14 @@ describe('Routing', () => {
     expect(page).toBeInTheDocument();
     //expect(page).not.toBeInTheDocument();
   });
+
+  it.each`
+    path   | pageTestId
+    ${'/'} | ${'home-page-image'}
+  `('displays homepage Image at /', ({ path, pageTestId }) => {
+    window.history.pushState({}, '', path);
+    render(MainLayout);
+    const page = screen.queryByTestId(pageTestId);
+    expect(page).toBeInTheDocument();
+  });
 });
