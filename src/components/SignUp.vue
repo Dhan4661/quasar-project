@@ -169,7 +169,6 @@ export default defineComponent({
       value,
       //schema,
       onSubmit() {
-        debugger;
         //window.alert('Submitted sucessfully');
         void router.push({ name: 'Login' });
 

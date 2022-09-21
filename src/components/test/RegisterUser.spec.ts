@@ -145,7 +145,6 @@ describe.skip('mocking with userEvent', () => {
     const selectTest = screen.getByTestId('selectTest');
     const signup = screen.getByTestId('signup');
 
-    debugger;
     await userEvent.type(UserName, 'Hello World!');
     await userEvent.type(accept, 'false');
 
@@ -159,7 +158,6 @@ describe.skip('mocking with userEvent', () => {
     expect(accept).toHaveValue('false');
     expect(selectTest).toHaveValue('Google');
 
-    debugger;
 
     userEvent.clear(UserName);
     expect(UserName).toHaveValue('');
@@ -172,7 +170,6 @@ describe.skip('mocking with userEvent', () => {
 
     const firstCall = mockFn.mock.calls[0];
 
-    debugger;
     const body = firstCall[1];
     expect(body).toEqual({
       test: 'Hello World!',

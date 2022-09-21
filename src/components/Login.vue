@@ -84,7 +84,6 @@ export default defineComponent({
       email,
       password,
       onSubmit() {
-        debugger;
         if (email.value == null || password.value == null) {
           window.alert('Please enter your details');
         } else {
