@@ -93,6 +93,9 @@
       "src(.*)$": "<rootDir>/src/$1",
       "components(.*)$": "<rootDir>/src/components/$1"
     },
-    "collectCoverage": true
+    "collectCoverage": true,
+    "setupFilesAfterEnv": [
+      "./src/test/setupTest.ts"
+    ]
   }
 }

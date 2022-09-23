@@ -1,6 +1,5 @@
 import RegisterUser from '../RegisterUser.vue';
 import { render, screen } from '@testing-library/vue';
-import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event';
 import axios from 'axios';
 import 'whatwg-fetch'
