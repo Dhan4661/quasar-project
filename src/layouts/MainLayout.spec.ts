@@ -1,6 +1,16 @@
 import { render, screen } from '@testing-library/vue';
 import MainLayout from './MainLayout.vue';
 import userEvent from '@testing-library/user-event';
+import routes from '../router/routes'
+
+
+const setup = async (path : string) => {
+  window.history.pushState({}, '', path);
+  render(MainLayout, {
+    routes,
+  });
+  //await routes.isReady();
+}
 
 describe('Routing', () => {
   it('displays homepage Image at /', () => {
@@ -15,8 +25,7 @@ describe('Routing', () => {
     path   | pageTestId
     ${'/'} | ${'home-page-image'}
   `('displays $pageTestId when $path is at /', ({ path, pageTestId }) => {
-    window.history.pushState({}, '', path);
-    render(MainLayout);
+    setup(path);
     const page = screen.queryByTestId(pageTestId);
     expect(page).toBeInTheDocument();
   });
