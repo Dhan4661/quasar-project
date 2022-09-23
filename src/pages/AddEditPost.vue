@@ -95,17 +95,17 @@ const linksList = [
   {
     title: 'Home',
     icon: 'school',
-    link: '#/Home',
+    link: '/Home',
   },
   {
     title: 'Reset Password',
     icon: 'code',
-    link: '#/ResetPassword',
+    link: '/ResetPassword',
   },
   {
     title: 'Logout',
     icon: 'favorite',
-    link: '#/Login',
+    link: '/Login',
   },
 ];
 

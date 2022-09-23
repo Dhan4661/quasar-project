@@ -80,22 +80,22 @@ const linksList = [
   {
     title: 'Home',
     icon: 'school',
-    link: '#/HomeIn',
+    link: '/HomeIn',
   },
   {
     title: 'Reset Password',
     icon: 'code',
-    link: '#/ResetPassword',
+    link: '/ResetPassword',
   },
   {
     title: 'Post',
     icon: 'chat',
-    link: '#/Post',
+    link: '/Post',
   },
   {
     title: 'Logout',
     icon: 'favorite',
-    link: '#/Login',
+    link: '/Login',
   },
 ];
 

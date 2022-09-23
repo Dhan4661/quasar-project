@@ -11,7 +11,13 @@
           </router-link>
         </q-toolbar-title>
         <div>
-          <a style="color: aliceblue; text-decoration: none" href="#/Register"> SignUp </a>
+          <router-link
+            data-testId="signUp"
+            style="color: aliceblue; text-decoration: none"
+            title="Register"
+            to="/Register"
+            >SignUp</router-link
+          >
         </div>
       </q-toolbar>
     </q-header>
@@ -68,7 +74,6 @@ import { MutationTypes } from 'src/store/auth/mutation-types';
 
 // const { commit } = useStore();
 
-
 export default defineComponent({
   name: 'LogIn',
 
@@ -77,8 +82,7 @@ export default defineComponent({
     const password = ref(null);
     //const $q = useQuasar();
     const router = useRouter();
-        const store = useStore();
-
+    const store = useStore();
 
     return {
       email,

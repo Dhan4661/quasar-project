@@ -11,12 +11,20 @@
           </router-link>
         </q-toolbar-title>
         <div>
-          <a style="color: aliceblue; text-decoration: none" href="#/Login">
-            Login
-          </a>
-          <a style="color: aliceblue; text-decoration: none" href="#/Register">
-            SignUp
-          </a>
+          <router-link
+            data-testId="login"
+            style="color: aliceblue; text-decoration: none; padding-right:5px"
+            title="Login"
+            to="/Login"
+            >Login</router-link
+          >
+          <router-link
+            data-testId="signUp"
+            style="color: aliceblue; text-decoration: none"
+            title="Register"
+            to="/Register"
+            >SignUp</router-link
+          >
         </div>
       </q-toolbar>
     </q-header>
@@ -27,10 +35,10 @@
           <q-card-header> </q-card-header>
           <q-divider></q-divider>
           <q-card-section>
-            <div style="font-size:30px">
+            <div style="font-size: 30px">
               Fabbook helps you connect and share with the people in your life.
             </div>
-            <HomepageImage/>
+            <HomepageImage />
           </q-card-section>
         </q-card>
       </div>
@@ -41,12 +49,12 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import HomepageImage from  '../components/HomepageImage.vue';
+import HomepageImage from '../components/HomepageImage.vue';
 
 export default defineComponent({
   name: 'MainLayout',
   components: {
     HomepageImage,
-  }
+  },
 });
 </script>

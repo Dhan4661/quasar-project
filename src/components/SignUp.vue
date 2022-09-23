@@ -11,9 +11,13 @@
           </router-link>
         </q-toolbar-title>
         <div>
-          <a style="color: aliceblue; text-decoration: none" href="#/Login">
-            Login
-          </a>
+           <router-link
+            data-testId="login"
+            style="color: aliceblue; text-decoration: none; padding-right:5px"
+            title="Login"
+            to="/Login"
+            >Login</router-link
+          >
         </div>
       </q-toolbar>
     </q-header>
