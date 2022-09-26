@@ -21,6 +21,13 @@ import { IAuth } from './auth/auth';
  * with the Store instance.
  */
 
+
+export interface IRootState {
+  // Define your own store structure, using submodules if needed
+  auth: IAuth;
+  // example: unknown;
+}
+
 export interface StateInterface {
   // Define your own store structure, using submodules if needed
   // example: ExampleStateInterface;
@@ -38,11 +45,6 @@ declare module '@vue/runtime-core' {
 // provide typings for `useStore` helper
 export const storeKey: InjectionKey<VuexStore<IRootState>> = Symbol('vuex-key');
 
-export interface IRootState {
-  // Define your own store structure, using submodules if needed
-  auth: IAuth;
-  // example: unknown;
-}
 
 export default store(function (/* { ssrContext } */) {
   const Store = createStore<IRootState>({

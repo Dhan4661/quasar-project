@@ -1,4 +1,4 @@
-<template>
+<template data-testId="sign-up-page">
   <q-layout view="lHh Lpr lFf">
     <q-header elevated>
       <q-toolbar>
@@ -11,9 +11,9 @@
           </router-link>
         </q-toolbar-title>
         <div>
-           <router-link
+          <router-link
             data-testId="login"
-            style="color: aliceblue; text-decoration: none; padding-right:5px"
+            style="color: aliceblue; text-decoration: none; padding-right: 5px"
             title="Login"
             to="/Login"
             >Login</router-link
@@ -152,7 +152,8 @@ export default defineComponent({
           'accept',
           'The terms and conditions must be accepted.',
           (value) => {
-            if (value == true) {
+            debugger;
+            if (value) {
               return true;
             }
             return false;

@@ -1,6 +1,7 @@
-import { route } from 'quasar/wrappers';
+//import { route } from 'quasar/wrappers';
 import { createRouter, createWebHistory } from 'vue-router';
 import routes from './routes';
+//import { IRootState } from '../store';
 
 /*
  * If not building with SSR mode, you can
@@ -11,16 +12,29 @@ import routes from './routes';
  * with the Router instance.
  */
 
-export default route(function (/* { store, ssrContext } */) {
-  const Router = createRouter({
-    scrollBehavior: () => ({ left: 0, top: 0 }),
-    routes,
+//comment for avoid vue testing-library error,
+// export default route(function (/* { store, ssrContext } */) {
+//   const Router = createRouter({
+//     scrollBehavior: () => ({ left: 0, top: 0 }),
+//     routes,
 
-    // Leave this as is and make changes in quasar.conf.js instead!
-    // quasar.conf.js -> build -> vueRouterMode
-    // quasar.conf.js -> build -> publicPath
-    history: createWebHistory(),
-  });
+//     // Leave this as is and make changes in quasar.conf.js instead!
+//     // quasar.conf.js -> build -> vueRouterMode
+//     // quasar.conf.js -> build -> publicPath
+//     history: createWebHistory(),
+//   });
 
-  return Router;
+//   return Router;
+// });
+
+const router = createRouter({
+  scrollBehavior: () => ({ left: 0, top: 0 }),
+  routes,
+
+  // Leave this as is and make changes in quasar.conf.js instead!
+  // quasar.conf.js -> build -> vueRouterMode
+  // quasar.conf.js -> build -> publicPath
+  history: createWebHistory(),
 });
+
+export default router;
