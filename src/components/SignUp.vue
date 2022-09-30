@@ -139,7 +139,6 @@ export default defineComponent({
           'accept',
           'The terms and conditions must be accepted.',
           (value) => {
-            debugger;
             if (value) {
               return true;
             }
@@ -158,7 +157,6 @@ export default defineComponent({
       signupSchema,
       value,
       onSubmit() {
-        debugger;
         let paramModel = {
           name: name.value,
           email: email.value,

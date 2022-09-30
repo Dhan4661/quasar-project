@@ -15,7 +15,6 @@ const setup = async (path: string) => {
 describe('Routing', () => {
   it('displays homepage Image at /', () => {
     render(MainLayout);
-    debugger;
     const page = screen.queryByTestId('home-page-image');
     expect(page).toBeInTheDocument();
     //expect(page).not.toBeInTheDocument();

@@ -85,7 +85,6 @@ const actions: ActionTree<IAuth, IRootState> & Actions = {
   ): Promise<ResponseResult<ISuccessMessage>> {
     return new Promise(() => {
       // TODO: store local storage
-      debugger;
       console.log(param);
     });
   },
