@@ -1,4 +1,5 @@
 <template>
+<div data-testId="login-page">
   <q-layout view="lHh Lpr lFf">
     <q-header elevated>
       <q-toolbar>
@@ -63,6 +64,7 @@
       </div>
     </q-page-container>
   </q-layout>
+  </div>
 </template>
 
 <script lang="ts">

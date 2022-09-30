@@ -3,29 +3,28 @@
     <q-header elevated>
       <q-toolbar>
         <q-toolbar-title>
-          <router-link
+          <div
             style="color: aliceblue; text-decoration: none"
-            :to="{ name: 'HomeOut' }"
+            @click="router.push('/')"
           >
             FabBook
-          </router-link>
+          </div>
         </q-toolbar-title>
-        <div>
-          <router-link
+          <div
             data-testId="login"
-            style="color: aliceblue; text-decoration: none; padding-right:5px"
-            title="Login"
-            to="/Login"
-            >Login</router-link
+            class="router-link"
+            style=" padding-right: 5px"
+            @click="router.push('/Login')"
           >
-          <router-link
+            Login
+          </div>
+          <div
             data-testId="signUp"
-            style="color: aliceblue; text-decoration: none"
-            title="Register"
-            to="/Register"
-            >SignUp</router-link
+            class="router-link"
+            @click="router.push('/Register')"
           >
-        </div>
+            SignUp
+          </div>
       </q-toolbar>
     </q-header>
 
@@ -47,14 +46,18 @@
   </q-layout>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
+<script lang="ts" setup>
 import HomepageImage from '../components/HomepageImage.vue';
+import { useRouter } from 'vue-router';
 
-export default defineComponent({
-  name: 'MainLayout',
-  components: {
-    HomepageImage,
-  },
-});
+const router = useRouter();
 </script>
+
+<style lang="scss">
+
+.router-link {
+  cursor: pointer;
+  color: aliceblue;
+  text-decoration: none;
+}
+</style>

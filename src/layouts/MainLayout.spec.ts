@@ -8,6 +8,7 @@ const setup = async (path: string) => {
     global: { plugins: [router] },
   });
   router.replace(path);
+  console.log('path: ' + path);
   await router.isReady();
 };
 
@@ -26,29 +27,26 @@ describe('Routing', () => {
     ${'/'} | ${'home-page-image'}
   `('displays $pageTestId when $path is at /', async ({ path, pageTestId }) => {
     await setup(path);
-    const page = screen.queryByTestId(pageTestId);
-    expect(page).toBeInTheDocument();
+    const page = await screen.findAllByTestId(pageTestId);
+    expect(page[1]).toBeInTheDocument();
   });
 
   it.each`
     initialPath | onClick     | visiblePage
-    ${'/'}      | ${'SignUp'} | ${'sign-up-page'}
+    ${'/'}      | ${'signUp'} | ${'sign-up-page'}
+    ${'/'}      | ${'login'} | ${'login-page'}
   `(
     'it routes to $visiblePage after clicking $onClick link',
-    async ({ initialPath, onClick , visiblePage }) => {
+    async ({ initialPath, onClick, visiblePage }) => {
       await setup(initialPath);
-      console.log('link', initialPath);
-      const link = screen.queryByRole('link', { name: onClick });
-      await userEvent.click(link);
-      const page = screen.queryByTestId(visiblePage);
-      expect(page).toBeInTheDocument();
+      const link =  screen.queryByRole('link', { name: onClick })  ;
+      if (link) {
+        await userEvent.click(link);
+        console.log(link);
+        const page = await screen.findByTestId(visiblePage);
+        expect(page).toBeInTheDocument();
+      }
     }
   );
 
-  it('it routes to signup page after clicking signup link', async () => {
-    render(MainLayout);
-    const link = screen.queryByRole('link', { name: 'signUp' });
-    //console.log('link', link);
-    //await userEvent.click(link);
-  });
 });

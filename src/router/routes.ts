@@ -4,7 +4,8 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/',
     name: 'HomeOut',
-    component: () => import('layouts/MainLayout.vue'),
+    component: () => import('../layouts/MainLayout.vue'),
+
   },
   {
     path: '/Home',
@@ -25,7 +26,7 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/Register',
     component: () => import('components/SignUp.vue'),
-    children: [{ path: '', component: () => import('pages/IndexPage.vue') }],
+    //children: [{ path: '', component: () => import('pages/IndexPage.vue') }],
   },
 
   {

@@ -1,71 +1,76 @@
-<template data-testId="sign-up-page">
-  <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
-      <q-toolbar>
-        <q-toolbar-title>
-          <router-link
-            style="color: aliceblue; text-decoration: none"
-            :to="{ name: 'HomeOut' }"
-          >
-            FabBook
-          </router-link>
-        </q-toolbar-title>
-        <div>
-          <router-link
-            data-testId="login"
-            style="color: aliceblue; text-decoration: none; padding-right: 5px"
-            title="Login"
-            to="/Login"
-            >Login</router-link
-          >
-        </div>
-      </q-toolbar>
-    </q-header>
-
-    <q-page-container>
-      <div style="padding: 100px">
-        <q-card>
-          <q-card-header>
-            <div class="registerTitle">
-              <span> NEW TO FABBOOK REGISTER HERE</span>
-            </div>
-          </q-card-header>
-          <q-card-section>
-            <v-form
-              @submit="onSubmit"
-              class="q-gutter-md"
-              :validation-schema="signupSchema"
+<template>
+  <div data-testId="sign-up-page">
+    <q-layout view="lHh Lpr lFf">
+      <q-header elevated>
+        <q-toolbar>
+          <q-toolbar-title>
+            <router-link
+              style="color: aliceblue; text-decoration: none"
+              :to="{ name: 'HomeOut' }"
             >
-              <q-input-with-validation
-                label="Your name *"
-                name="name"
-                dense
-                data-testId="name"
-              />
-              <q-input-with-validation
-                type="email"
-                name="email"
-                dense
-                label="Your Email Address*"
-                data-testId="email"
-              />
-              <q-input-with-validation
-                type="number"
-                name="phoneNumber"
-                dense
-                label="Your Contact Number *"
-                data-testId="number"
-              />
+              FabBook
+            </router-link>
+          </q-toolbar-title>
+          <div>
+            <router-link
+              data-testId="login"
+              style="
+                color: aliceblue;
+                text-decoration: none;
+                padding-right: 5px;
+              "
+              title="Login"
+              to="/Login"
+              >Login</router-link
+            >
+          </div>
+        </q-toolbar>
+      </q-header>
 
-              <q-input-with-validation
-                type="number"
-                name="age"
-                dense
-                label="Your age *"
-                data-testId="age"
-              />
+      <q-page-container>
+        <div style="padding: 100px">
+          <q-card>
+            <q-card-header>
+              <div class="registerTitle">
+                <span> NEW TO FABBOOK REGISTER HERE</span>
+              </div>
+            </q-card-header>
+            <q-card-section>
+              <v-form
+                @submit="onSubmit"
+                class="q-gutter-md"
+                :validation-schema="signupSchema"
+              >
+                <q-input-with-validation
+                  label="Your name *"
+                  name="name"
+                  dense
+                  data-testId="name"
+                />
+                <q-input-with-validation
+                  type="email"
+                  name="email"
+                  dense
+                  label="Your Email Address*"
+                  data-testId="email"
+                />
+                <q-input-with-validation
+                  type="number"
+                  name="phoneNumber"
+                  dense
+                  label="Your Contact Number *"
+                  data-testId="number"
+                />
 
-              <!-- <q-select
+                <q-input-with-validation
+                  type="number"
+                  name="age"
+                  dense
+                  label="Your age *"
+                  data-testId="age"
+                />
+
+                <!-- <q-select
                 :v-model="gender"
                 label="Gender"
                 data-testId="gender"
@@ -75,33 +80,34 @@
               >
               </q-select> -->
 
-              <q-toggle
-                v-model="value"
-                name="accept"
-                checked-icon="check"
-                unchecked-icon="clear"
-                label="I accept the terms and conditions"
-                data-testId="accept"
-                :error="errorMessage"
-              />
-              <div style="color: red">{{ errorMessage }}</div>
+                <q-toggle
+                  v-model="value"
+                  name="accept"
+                  checked-icon="check"
+                  unchecked-icon="clear"
+                  label="I accept the terms and conditions"
+                  data-testId="accept"
+                  :error="errorMessage"
+                />
+                <div style="color: red">{{ errorMessage }}</div>
 
-              <div>
-                <q-btn type="submit" color="primary">Submit</q-btn>
-                <!-- <q-btn
+                <div>
+                  <q-btn type="submit" color="primary">Submit</q-btn>
+                  <!-- <q-btn
                   label="Reset"
                   type="reset"
                   color="primary"
                   flat
                   class="q-ml-sm"
                 /> -->
-              </div>
-            </v-form>
-          </q-card-section>
-        </q-card>
-      </div>
-    </q-page-container>
-  </q-layout>
+                </div>
+              </v-form>
+            </q-card-section>
+          </q-card>
+        </div>
+      </q-page-container>
+    </q-layout>
+  </div>
 </template>
 
 <script lang="ts">
