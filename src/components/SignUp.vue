@@ -70,16 +70,6 @@
                   data-testId="age"
                 />
 
-                <!-- <q-select
-                :v-model="gender"
-                label="Gender"
-                data-testId="gender"
-                :options="genderList"
-                :option-label="name"
-                :option-value="id"
-              >
-              </q-select> -->
-
                 <q-toggle
                   v-model="value"
                   name="accept"
@@ -93,13 +83,6 @@
 
                 <div>
                   <q-btn type="submit" color="primary">Submit</q-btn>
-                  <!-- <q-btn
-                  label="Reset"
-                  type="reset"
-                  color="primary"
-                  flat
-                  class="q-ml-sm"
-                /> -->
                 </div>
               </v-form>
             </q-card-section>
@@ -133,10 +116,8 @@ export default defineComponent({
     const phoneNumber = ref(null);
     const age = ref(null);
 
-    const accept = ref(false);
     const router = useRouter();
     const store = useStore();
-    //const genderList = ref(['Male', 'Female', 'Other']);
 
     const signupSchema = yup.object({
       name: yup.string().required('Name is required'),
@@ -174,17 +155,26 @@ export default defineComponent({
       age,
       q,
       errorMessage,
-      accept,
-      //genderList,
       signupSchema,
       value,
-      //schema,
       onSubmit() {
-        //window.alert('Submitted sucessfully');
-        void router.push({ name: 'Login' });
+        debugger;
+        let paramModel = {
+          name: name.value,
+          email: email.value,
+          phoneNumber: phoneNumber.value,
+          age: age.value,
+        };
 
+        const model: {
+          model: IUser;
+          apiName: string;
+        } = {
+          model: paramModel,
+          apiName: 'register',
+        };
         // store
-        store.dispatch('auth/REGISTER', name).then(
+        store.dispatch('auth/REGISTER', model).then(
           () => {
             window.alert('Submitted sucessfully');
 

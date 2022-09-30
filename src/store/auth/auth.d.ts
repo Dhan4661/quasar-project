@@ -46,6 +46,14 @@ export interface IUserStafModel extends IRegisterModel {
   staffNo: string;
   staffFullName: string;
 }
+
+export interface IUser {
+  name: string;
+  email: string;
+  phoneNumber: string;
+  age: string;
+  accept: boolean | string;
+}
 export interface ITradeCustomerModel extends IRegisterModel {
   businessName: string;
   customerCode: string;

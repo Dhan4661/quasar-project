@@ -12,6 +12,7 @@ import {
   ISwitchAccountModel,
   ISwitchAccountResponse,
   ITradeCustomerModel,
+  IUser,
   IUserStafModel,
   IVerifyTokenResponse,
 } from './auth';
@@ -33,7 +34,7 @@ export interface Actions {
   ): Promise<ResponseResult<IAuth>>;
   [ActionTypes.REGISTER](
     { commit }: AugmentedActionContext,
-    param: { model: IUserStafModel | ITradeCustomerModel; apiName: string }
+    param: { model: IUser; apiName: string }
   ): Promise<ResponseResult<ISuccessMessage>>;
   [ActionTypes.FORGOT_PASSWORD](
     { commit }: AugmentedActionContext,
@@ -80,10 +81,11 @@ const actions: ActionTree<IAuth, IRootState> & Actions = {
   },
   [ActionTypes.REGISTER](
     {},
-    param: { model: IUserStafModel | ITradeCustomerModel; apiName: string }
+    param: { model: IUser; apiName: string }
   ): Promise<ResponseResult<ISuccessMessage>> {
-    return new Promise(( ) => {
+    return new Promise(() => {
       // TODO: store local storage
+      debugger;
       console.log(param);
     });
   },
