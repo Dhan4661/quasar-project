@@ -6,14 +6,11 @@ import { IRootState } from '../index';
 import { ActionTypes } from './action-types';
 import {
   IAuth,
-  ICategoriesAccsets,
   ILoginModel,
   ISearchAccountResponse,
   ISwitchAccountModel,
   ISwitchAccountResponse,
-  ITradeCustomerModel,
   IUser,
-  IUserStafModel,
   IVerifyTokenResponse,
 } from './auth';
 import { Mutations } from './mutations';
@@ -61,7 +58,7 @@ export interface Actions {
   ): Promise<ResponseResult<ISearchAccountResponse>>;
   [ActionTypes.LOGOUT](): Promise<ResponseResult<ISuccessMessage>>;
   [ActionTypes.GET_CATEGORIES_ACCSETS](): Promise<
-    ResponseResult<ICategoriesAccsets>
+    ResponseResult<unknown>
   >;
 }
 
@@ -83,9 +80,18 @@ const actions: ActionTree<IAuth, IRootState> & Actions = {
     {},
     param: { model: IUser; apiName: string }
   ): Promise<ResponseResult<ISuccessMessage>> {
-    return new Promise(() => {
+    return new Promise((resolve, reject) => {
       // TODO: store local storage
-      console.log(param);
+      api
+        .post(`auth/localhost/${param.apiName}`, param.model)
+        .then((response) => {
+          debugger;
+          resolve(response.data);
+        })
+        .catch((error) => {
+          reject(error.response);
+        });
+      debugger;
     });
   },
   [ActionTypes.FORGOT_PASSWORD](
@@ -190,12 +196,12 @@ const actions: ActionTree<IAuth, IRootState> & Actions = {
     });
   },
   [ActionTypes.GET_CATEGORIES_ACCSETS](): Promise<
-    ResponseResult<ICategoriesAccsets>
+    ResponseResult<unknown>
   > {
     return new Promise((resolve, reject) => {
       api
         .get(`catalog/${process.env.API_VERSION}/MainCategory`)
-        .then((response: AxiosResponse<ResponseResult<ICategoriesAccsets>>) => {
+        .then((response: AxiosResponse<ResponseResult<unknown>>) => {
           resolve(response.data);
         })
         .catch((error) => {

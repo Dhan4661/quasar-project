@@ -1,4 +1,3 @@
-import { IMenu, ISubMenus } from 'src/common';
 
 export interface IAuth {
   currentUserData: {
@@ -7,9 +6,7 @@ export interface IAuth {
   };
   firebaseRegToken: string;
   showAccountSetDialog: boolean;
-  accsets: ICategoriesAccsets['accsets'];
   loadingCategoriesAccsets: boolean;
-  menus: IMenu[];
 }
 export interface ISwitchAccountResponse {
   accessToken: string;
@@ -48,17 +45,12 @@ export interface IUserStafModel extends IRegisterModel {
 }
 
 export interface IUser {
-  name: string;
-  email: string;
-  phoneNumber: string;
-  age: string;
-  accept: boolean | string;
+  name: string | null;
+  email: string | null;
+  phoneNumber: string | null;
+  age: string | null;
 }
-export interface ITradeCustomerModel extends IRegisterModel {
-  businessName: string;
-  customerCode: string;
-  customerName: string;
-}
+
 
 export interface IVerifyTokenResponse {
   emailAddress: string;
@@ -70,12 +62,3 @@ export interface ISearchAccountResponse {
   accounts: { code: string; name: string }[];
 }
 
-export interface IAccSets {
-  code: string;
-  name: string;
-}
-
-export interface ICategoriesAccsets {
-  accsets: IAccSets[];
-  nodes: ISubMenus[];
-}

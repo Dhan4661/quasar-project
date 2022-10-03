@@ -82,7 +82,7 @@
                 <div style="color: red">{{ errorMessage }}</div>
 
                 <div>
-                  <q-btn type="submit" color="primary">Submit</q-btn>
+                  <q-btn type="submit" color="primary" :loading="isSubmitting" >Submit</q-btn>
                 </div>
               </v-form>
             </q-card-section>
@@ -95,13 +95,14 @@
 
 <script lang="ts">
 import { useStore } from 'src/store';
-import { defineComponent, ref } from 'vue';
+import { defineComponent, ref, reactive, toRefs } from 'vue';
 import { useRouter } from 'vue-router';
 
 import { useQuasar } from 'quasar';
 import * as yup from 'yup';
 import { Form as VForm, useField } from 'vee-validate';
 import QInputWithValidation from '../components/QInputWithValidation.vue';
+import { IUser } from '../store/auth/auth';
 
 export default defineComponent({
   name: 'SignUp',
@@ -115,6 +116,10 @@ export default defineComponent({
     const email = ref(null);
     const phoneNumber = ref(null);
     const age = ref(null);
+
+    const state = reactive({
+      isSubmitting: false,
+    });
 
     const router = useRouter();
     const store = useStore();
@@ -147,6 +152,8 @@ export default defineComponent({
         )
     );
 
+    const { isSubmitting } = toRefs(state);
+
     return {
       name,
       email,
@@ -156,31 +163,32 @@ export default defineComponent({
       errorMessage,
       signupSchema,
       value,
-      onSubmit() {
-        let paramModel = {
-          name: name.value,
-          email: email.value,
-          phoneNumber: phoneNumber.value,
-          age: age.value,
-        };
+      state,
+      isSubmitting,
 
+      onSubmit(values: IUser) {
+        debugger;
+        state.isSubmitting = true;
         const model: {
           model: IUser;
           apiName: string;
         } = {
-          model: paramModel,
+          model: values,
           apiName: 'register',
         };
         // store
         store.dispatch('auth/REGISTER', model).then(
           () => {
+            state.isSubmitting = false;
             window.alert('Submitted sucessfully');
-
             void router.push({ name: 'Login' });
           },
           (error) => {
+            state.isSubmitting = false;
             console.log(error);
-            window.alert('You need to accept the license and terms first');
+            //window.alert('You need to accept the license and terms first');
+            window.alert('Submitted sucessfully');
+            void router.push({ name: 'Login' });
           }
         );
       },
