@@ -85,13 +85,11 @@ const actions: ActionTree<IAuth, IRootState> & Actions = {
       api
         .post(`auth/localhost/${param.apiName}`, param.model)
         .then((response) => {
-          debugger;
           resolve(response.data);
         })
         .catch((error) => {
           reject(error.response);
         });
-      debugger;
     });
   },
   [ActionTypes.FORGOT_PASSWORD](

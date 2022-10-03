@@ -167,7 +167,6 @@ export default defineComponent({
       isSubmitting,
 
       onSubmit(values: IUser) {
-        debugger;
         state.isSubmitting = true;
         const model: {
           model: IUser;
