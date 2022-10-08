@@ -58,7 +58,8 @@ const props = withDefaults(defineProps<Props>(), {
   dense: true,
   type: 'text',
 });
-// https://vee-validate.logaretm.com/v4/api/use-field#usage-with-typescript
+
+
 const { errorMessage, value } = useField<string>(props.name);
 </script>
 <style>

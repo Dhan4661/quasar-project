@@ -10,21 +10,23 @@
             FabBook
           </div>
         </q-toolbar-title>
-          <div
-            data-testId="login"
-            class="router-link"
-            style=" padding-right: 5px"
-            @click="router.push('/Login')"
-          >
-            Login
-          </div>
-          <div
-            data-testId="signUp"
-            class="router-link"
-            @click="router.push('/Register')"
-          >
-            SignUp
-          </div>
+        <div
+          data-testId="login"
+          class="router-link"
+          style="padding-right: 5px"
+          @click="router.push('/Login')"
+        >
+          Login
+        </div>
+        <div
+          data-testId="signUp"
+          class="router-link"
+          style="padding-right: 5px"
+          @click="router.push('/Register')"
+        >
+          SignUp
+        </div>
+        <div class="router-link" @click="router.push('/Home')">Home</div>
       </q-toolbar>
     </q-header>
 
@@ -54,7 +56,6 @@ const router = useRouter();
 </script>
 
 <style lang="scss">
-
 .router-link {
   cursor: pointer;
   color: aliceblue;

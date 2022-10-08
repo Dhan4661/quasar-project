@@ -7,9 +7,6 @@ import { ActionTypes } from './action-types';
 import {
   IAuth,
   ILoginModel,
-  ISearchAccountResponse,
-  ISwitchAccountModel,
-  ISwitchAccountResponse,
   IUser,
   IVerifyTokenResponse,
 } from './auth';
@@ -48,18 +45,8 @@ export interface Actions {
       token: string;
     }
   ): Promise<ResponseResult<ISuccessMessage>>;
-  [ActionTypes.SWITCH_ACCOUNT](
-    { commit }: AugmentedActionContext,
-    params: ISwitchAccountModel
-  ): Promise<ResponseResult<ISwitchAccountResponse>>;
-  [ActionTypes.SEARCH_ACCOUNTS](
-    { commit }: AugmentedActionContext,
-    searchItem: string
-  ): Promise<ResponseResult<ISearchAccountResponse>>;
-  [ActionTypes.LOGOUT](): Promise<ResponseResult<ISuccessMessage>>;
-  [ActionTypes.GET_CATEGORIES_ACCSETS](): Promise<
-    ResponseResult<unknown>
-  >;
+
+
 }
 
 // Define actions
@@ -145,42 +132,7 @@ const actions: ActionTree<IAuth, IRootState> & Actions = {
         });
     });
   },
-  [ActionTypes.SWITCH_ACCOUNT](
-    {},
-    param: ISwitchAccountModel
-  ): Promise<ResponseResult<ISwitchAccountResponse>> {
-    return new Promise((resolve, reject) => {
-      api
-        .post(`auth/${process.env.API_VERSION}/switch`, param)
-        .then(
-          (response: AxiosResponse<ResponseResult<ISwitchAccountResponse>>) => {
-            resolve(response.data);
-          }
-        )
-        .catch((error) => {
-          reject(error.response);
-        });
-    });
-  },
-  [ActionTypes.SEARCH_ACCOUNTS](
-    {},
-    searchItem: string
-  ): Promise<ResponseResult<ISearchAccountResponse>> {
-    return new Promise((resolve, reject) => {
-      api
-        .get(
-          `member/${process.env.API_VERSION}/GetCustomer?searchterm=${searchItem}&offset=0&limit=16`
-        )
-        .then(
-          (response: AxiosResponse<ResponseResult<ISearchAccountResponse>>) => {
-            resolve(response.data);
-          }
-        )
-        .catch((error) => {
-          reject(error.response);
-        });
-    });
-  },
+
   [ActionTypes.LOGOUT](): Promise<ResponseResult<ISuccessMessage>> {
     return new Promise((resolve, reject) => {
       api

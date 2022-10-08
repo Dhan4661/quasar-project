@@ -4,23 +4,10 @@ export interface IAuth {
     name: string,
     email: string,
   };
-  firebaseRegToken: string;
-  showAccountSetDialog: boolean;
-  loadingCategoriesAccsets: boolean;
-}
-export interface ISwitchAccountResponse {
-  accessToken: string;
-  minimumOrder: number;
-  suppressPricing: boolean;
-  canOrder: boolean;
 }
 
-export interface ISwitchAccountModel {
-  accountCode: string;
-  registrationToken?: string;
-  deviceId?: string;
-  channel: string;
-}
+
+
 
 export interface ILoginModel {
   appKey: string;
@@ -58,7 +45,4 @@ export interface IVerifyTokenResponse {
   tokenState: number;
 }
 
-export interface ISearchAccountResponse {
-  accounts: { code: string; name: string }[];
-}
 

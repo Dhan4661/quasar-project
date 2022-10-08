@@ -14,7 +14,7 @@
         <q-toolbar-title>
           <router-link
             style="color: aliceblue; text-decoration: none"
-            :to="{ name: 'HomeIn' }"
+            :to="{ name: 'HomePage' }"
           >
             FabBook
           </router-link>
@@ -136,7 +136,7 @@ export default defineComponent({
       },
       onSubmit() {
         window.alert('Post created sucessfully');
-        void router.push({ name: 'HomeIn' });
+        void router.push({ name: 'HomePage' });
       },
     };
   },

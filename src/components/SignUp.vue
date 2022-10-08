@@ -82,7 +82,9 @@
                 <div style="color: red">{{ errorMessage }}</div>
 
                 <div>
-                  <q-btn type="submit" color="primary" :loading="isSubmitting" >Submit</q-btn>
+                  <q-btn type="submit" color="primary" :loading="isSubmitting"
+                    >Submit</q-btn
+                  >
                 </div>
               </v-form>
             </q-card-section>
@@ -117,7 +119,7 @@ export default defineComponent({
     const phoneNumber = ref(null);
     const age = ref(null);
 
-    const state = reactive({
+    const stateObject = reactive({
       isSubmitting: false,
     });
 
@@ -152,7 +154,7 @@ export default defineComponent({
         )
     );
 
-    const { isSubmitting } = toRefs(state);
+    const { isSubmitting } = toRefs(stateObject);
 
     return {
       name,
@@ -163,11 +165,11 @@ export default defineComponent({
       errorMessage,
       signupSchema,
       value,
-      state,
+      stateObject,
       isSubmitting,
 
       onSubmit(values: IUser) {
-        state.isSubmitting = true;
+        stateObject.isSubmitting = true;
         const model: {
           model: IUser;
           apiName: string;
@@ -178,14 +180,21 @@ export default defineComponent({
         // store
         store.dispatch('auth/REGISTER', model).then(
           () => {
-            state.isSubmitting = false;
+            stateObject.isSubmitting = false;
             window.alert('Submitted sucessfully');
             void router.push({ name: 'Login' });
           },
           (error) => {
-            state.isSubmitting = false;
+            stateObject.isSubmitting = false;
             console.log(error);
             //window.alert('You need to accept the license and terms first');
+            debugger;
+            //get.localstorage
+            let stateParamModel = {
+              email: values.email,
+              name: values.name,
+            };
+            store.commit('auth/SET_CURRENT_USERDATA', stateParamModel);
             window.alert('Submitted sucessfully');
             void router.push({ name: 'Login' });
           }

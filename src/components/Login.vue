@@ -68,11 +68,10 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
+import { defineComponent, ref, computed } from 'vue';
 //import { useQuasar } from 'quasar';
 import { useRouter } from 'vue-router';
 import { useStore } from 'src/store';
-import { MutationTypes } from 'src/store/auth/mutation-types';
 
 // const { commit } = useStore();
 
@@ -85,6 +84,8 @@ export default defineComponent({
     //const $q = useQuasar();
     const router = useRouter();
     const store = useStore();
+    const currentUserData = computed(() => store.state.auth.currentUserData);
+
 
     return {
       email,
@@ -94,12 +95,10 @@ export default defineComponent({
           window.alert('Please enter your details');
         } else {
           window.alert('Login sucessfully');
-          let storeData = {
-            name: 'Dhan Patel',
-            email: email.value,
-          };
-          store.commit(`auth/${MutationTypes.SET_CURRENT_USERDATA}`, storeData);
-          void router.push({ name: 'HomeIn' });
+          debugger;
+          if(currentUserData.value.email == email.value);{
+            void router.push({ name: 'HomePage' });
+          }
         }
       },
     };

@@ -5,8 +5,5 @@ export const state: IAuth = {
     name: '',
     email: '',
   },
-  firebaseRegToken: '',
-  showAccountSetDialog: false,
-  loadingCategoriesAccsets: false,
 
 };

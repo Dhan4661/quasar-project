@@ -14,7 +14,7 @@
         <q-toolbar-title>
           <router-link
             style="color: aliceblue; text-decoration: none"
-            :to="{ name: 'HomeIn' }"
+            :to="{ name: 'HomePage' }"
           >
             {{ userName }}
           </router-link>
@@ -28,7 +28,7 @@
         <q-item-label header> Profile </q-item-label>
 
         <EssentialLink
-          v-for="link in essentialLinks"
+          v-for="link in linksList"
           :key="link.title"
           v-bind="link"
         />
@@ -63,24 +63,21 @@
   </q-layout>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref, computed } from 'vue';
+<script lang="ts" setup>
+import { ref, computed } from 'vue';
 import EssentialLink from 'components/EssentialLink.vue';
 import PostList from '../components/PostList.vue';
 import { useStore } from 'src/store';
 //import { MutationTypes } from 'src/store/auth/mutation-types';
 
-
- const { state } = useStore();
+const { state } = useStore();
 //const store = useStore();
-
-
 
 const linksList = [
   {
     title: 'Home',
     icon: 'school',
-    link: '/HomeIn',
+    link: '/Home',
   },
   {
     title: 'Reset Password',
@@ -95,33 +92,17 @@ const linksList = [
   {
     title: 'Logout',
     icon: 'favorite',
-    link: '/Login',
+    link: '/',
   },
 ];
 
-export default defineComponent({
-  name: 'HomePage',
-
-  components: {
-    EssentialLink,
-    PostList,
-  },
-
-  setup() {
-    const leftDrawerOpen = ref(false);
-    const userName = computed(() => {
-      return state.auth.currentUserData.name
-    })
-    //ref(store.state.auth.currentUserData.name)
-
-    return {
-      essentialLinks: linksList,
-      leftDrawerOpen,
-      userName,
-      toggleLeftDrawer() {
-        leftDrawerOpen.value = !leftDrawerOpen.value;
-      },
-    };
-  },
+const leftDrawerOpen = ref(false);
+const userName = computed(() => {
+  return state.auth.currentUserData.name;
 });
+//ref(store.state.auth.currentUserData.name)
+
+const toggleLeftDrawer = () => {
+  leftDrawerOpen.value = !leftDrawerOpen.value;
+};
 </script>
