@@ -1,79 +1,72 @@
 <template>
-<div data-testId="login-page">
-  <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
-      <q-toolbar>
-        <q-toolbar-title>
-          <router-link
-            style="color: aliceblue; text-decoration: none"
-            :to="{ name: 'HomeOut' }"
-          >
-            FabBook
-          </router-link>
-        </q-toolbar-title>
-        <div>
-          <router-link
-            data-testId="signUp"
-            style="color: aliceblue; text-decoration: none"
-            title="Register"
-            to="/Register"
-            >SignUp</router-link
-          >
+  <div data-testId="login-page">
+    <q-layout view="lHh Lpr lFf">
+      <q-header elevated>
+        <q-toolbar>
+          <q-toolbar-title>
+            <router-link
+              style="color: aliceblue; text-decoration: none"
+              :to="{ name: 'HomeOut' }"
+            >
+              FabBook
+            </router-link>
+          </q-toolbar-title>
+          <div>
+            <router-link
+              data-testId="signUp"
+              style="color: aliceblue; text-decoration: none"
+              title="Register"
+              to="/Register"
+              >SignUp</router-link
+            >
+          </div>
+        </q-toolbar>
+      </q-header>
+
+      <q-page-container>
+        <div style="padding: 100px">
+          <q-card>
+            <q-card-header>
+              <div class="registerTitle">FABBOOK USER LOGIN HERE</div>
+            </q-card-header>
+            <q-divider></q-divider>
+            <q-card-section>
+              <q-form @submit="onSubmit" class="q-gutter-md">
+                <q-input
+                  filled
+                  v-model="email"
+                  label="Your Email*"
+                  hint="example@gmail.com"
+                  lazy-rules
+                />
+
+                <q-input
+                  filled
+                  type="password"
+                  v-model="password"
+                  label="Password"
+                  lazy-rules
+                />
+
+                <div>
+                  <q-btn label="Submit" type="submit" color="primary" />
+                 
+                </div>
+              </q-form>
+            </q-card-section>
+          </q-card>
         </div>
-      </q-toolbar>
-    </q-header>
-
-    <q-page-container>
-      <div style="padding: 100px">
-        <q-card>
-          <q-card-header>
-            <div class="registerTitle">FABBOOK USER LOGIN HERE</div>
-          </q-card-header>
-          <q-divider></q-divider>
-          <q-card-section>
-            <q-form @submit="onSubmit" class="q-gutter-md">
-              <q-input
-                filled
-                v-model="email"
-                label="Your Email*"
-                hint="example@gmail.com"
-                lazy-rules
-              />
-
-              <q-input
-                filled
-                type="password"
-                v-model="password"
-                label="Password"
-                lazy-rules
-              />
-
-              <div>
-                <q-btn label="Submit" type="submit" color="primary" />
-                <!-- <q-btn
-                  label="Reset"
-                  type="reset"
-                  color="primary"
-                  flat
-                  class="q-ml-sm"
-                /> -->
-              </div>
-            </q-form>
-          </q-card-section>
-        </q-card>
-      </div>
-    </q-page-container>
-  </q-layout>
+      </q-page-container>
+    </q-layout>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed } from 'vue';
-//import { useQuasar } from 'quasar';
+import { defineComponent, ref } from 'vue';
 import { useRouter } from 'vue-router';
-import { useStore } from 'src/store';
+import { useUserData } from 'src/composables/use-userData';
 
-// const { commit } = useStore();
+
 
 export default defineComponent({
   name: 'LogIn',
@@ -81,11 +74,8 @@ export default defineComponent({
   setup() {
     const email = ref(null);
     const password = ref(null);
-    //const $q = useQuasar();
     const router = useRouter();
-    const store = useStore();
-    const currentUserData = computed(() => store.state.auth.currentUserData);
-
+    const { currentUserData } = useUserData();
 
     return {
       email,
@@ -95,8 +85,7 @@ export default defineComponent({
           window.alert('Please enter your details');
         } else {
           window.alert('Login sucessfully');
-          debugger;
-          if(currentUserData.value.email == email.value);{
+          if (currentUserData.value.email == email.value) {
             void router.push({ name: 'HomePage' });
           }
         }
