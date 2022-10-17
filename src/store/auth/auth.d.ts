@@ -1,13 +1,9 @@
-
 export interface IAuth {
   currentUserData: {
-    name: string,
-    email: string,
+    name: string;
+    email: string;
   };
 }
-
-
-
 
 export interface ILoginModel {
   appKey: string;
@@ -38,11 +34,8 @@ export interface IUser {
   age: string | null;
 }
 
-
 export interface IVerifyTokenResponse {
   emailAddress: string;
   token: string;
   tokenState: number;
 }
-
-

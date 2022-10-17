@@ -1,11 +1,11 @@
 import { RouteRecordRaw } from 'vue-router';
 
 const routes: RouteRecordRaw[] = [
-  {
-    path: '/',
-    name: 'HomeOut',
-    component: () => import('../layouts/MainLayout.vue'),
-  },
+  // {
+  //   path: '/',
+  //   name: 'HomeOut',
+  //   component: () => import('../layouts/MainLayout.vue'),
+  // },
   {
     path: '/Home',
     name: 'HomePage',
@@ -34,10 +34,23 @@ const routes: RouteRecordRaw[] = [
     component: () => import('components/RegisterUser.vue'),
   },
 
+  // {
+  //   path: '/Login',
+  //   name: 'Login',
+  //   component: () => import('components/Login.vue'),
+  // },
+
+  //khush prac
+  {
+    path: '/',
+    name: 'HomePage',
+    component: () => import('components/khushPrac/HomePage.vue'),
+  },
+
   {
     path: '/Login',
     name: 'Login',
-    component: () => import('components/Login.vue'),
+    component: () => import('components/khushPrac/Login.vue'),
   },
 
   // {

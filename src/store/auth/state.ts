@@ -5,5 +5,4 @@ export const state: IAuth = {
     name: '',
     email: '',
   },
-
 };

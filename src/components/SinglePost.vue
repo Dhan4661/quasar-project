@@ -1,9 +1,14 @@
 <template>
   <div class="q-pa-md">
-    <q-btn label="View Post" style="margin-right:20px" color="primary" @click="dialog = true" />
+    <q-btn
+      label="View Post"
+      style="margin-right: 20px"
+      color="primary"
+      @click="dialog = true"
+    />
 
     <q-dialog v-model="dialog" persistent>
-      <q-card >
+      <q-card>
         <q-card-section class="row items-center">
           <!-- <span class="q-ml-sm">{{props.name}}</span> -->
         </q-card-section>
@@ -46,17 +51,14 @@ import { computed, ref } from 'vue';
 
 //const $q = useQuasar();
 
-
 interface IProps {
   post: string;
 }
 const props = defineProps<IProps>();
 
-
-
 const snippet = computed(() => {
- // return props.post.description.substring(0, 10000) + '....';
- return props.post.description
+  // return props.post.description.substring(0, 10000) + '....';
+  return props.post.description;
 });
 
 const dialog = ref(false);

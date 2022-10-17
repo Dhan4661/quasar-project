@@ -59,7 +59,6 @@ const props = withDefaults(defineProps<Props>(), {
   type: 'text',
 });
 
-
 const { errorMessage, value } = useField<string>(props.name);
 </script>
 <style>

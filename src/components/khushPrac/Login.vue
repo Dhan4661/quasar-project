@@ -6,7 +6,7 @@
           <q-toolbar-title>
             <router-link
               style="color: aliceblue; text-decoration: none"
-              :to="{ name: 'HomeOut' }"
+              :to="{ name: 'HomePage' }"
             >
               FabBook
             </router-link>
@@ -25,9 +25,9 @@
 
       <q-page-container>
         <div style="padding: 100px">
-          <q-card>
+          <q-card style="background: radial-gradient(circle, #35a2ff 0%, #014a88 100%)">
             <q-card-header>
-              <div class="registerTitle">FABBOOK USER LOGIN HERE</div>
+              <div class="registerTitle">LOGIN</div>
             </q-card-header>
             <q-divider></q-divider>
             <q-card-section>
@@ -73,6 +73,8 @@ export default defineComponent({
     const password = ref(null);
     const router = useRouter();
     const { currentUserData } = useUserData();
+
+    
 
     return {
       email,

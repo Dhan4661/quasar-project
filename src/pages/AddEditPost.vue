@@ -49,7 +49,7 @@
             <q-card-header> </q-card-header>
             <q-divider></q-divider>
             <q-card-section>
-              <q-form @submit="onSubmit"  class="q-gutter-md">
+              <q-form @submit="onSubmit" class="q-gutter-md">
                 <q-input
                   filled
                   v-model="post.name"
@@ -125,7 +125,6 @@ export default defineComponent({
       description: '',
       accept: '',
     });
-
 
     return {
       essentialLinks: linksList,

@@ -6,7 +6,11 @@
         <q-item-section>
           {{ post.name }}
           <SinglePost :post="post" />
-          <EditPost v-if="true" :post="post" @on-update="(e) => updatePost(e)" />
+          <EditPost
+            v-if="true"
+            :post="post"
+            @on-update="(e) => updatePost(e)"
+          />
         </q-item-section>
       </q-item>
     </q-list>
@@ -65,13 +69,13 @@ export default {
     return {
       postLinks: postsList,
       updatePost(value) {
-        postsList.forEach(element => {
-          if(element.name == value.name){
-          element.description = value.description;
+        postsList.forEach((element) => {
+          if (element.name == value.name) {
+            element.description = value.description;
           }
         });
-      }
-    }
-  }
+      },
+    };
+  },
 };
 </script>

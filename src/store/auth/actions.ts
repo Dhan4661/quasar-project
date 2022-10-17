@@ -4,12 +4,7 @@ import { ISuccessMessage, ResponseResult } from 'src/common';
 import { ActionContext, ActionTree } from 'vuex';
 import { IRootState } from '../index';
 import { ActionTypes } from './action-types';
-import {
-  IAuth,
-  ILoginModel,
-  IUser,
-  IVerifyTokenResponse,
-} from './auth';
+import { IAuth, ILoginModel, IUser, IVerifyTokenResponse } from './auth';
 import { Mutations } from './mutations';
 
 // Actions context
@@ -45,8 +40,6 @@ export interface Actions {
       token: string;
     }
   ): Promise<ResponseResult<ISuccessMessage>>;
-
-
 }
 
 // Define actions
@@ -145,9 +138,7 @@ const actions: ActionTree<IAuth, IRootState> & Actions = {
         });
     });
   },
-  [ActionTypes.GET_CATEGORIES_ACCSETS](): Promise<
-    ResponseResult<unknown>
-  > {
+  [ActionTypes.GET_CATEGORIES_ACCSETS](): Promise<ResponseResult<unknown>> {
     return new Promise((resolve, reject) => {
       api
         .get(`catalog/${process.env.API_VERSION}/MainCategory`)

@@ -18,7 +18,6 @@
           />
         </q-card-section>
 
-
         <!-- Notice v-close-popup -->
         <q-card-actions align="right">
           <q-btn
