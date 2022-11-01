@@ -6,33 +6,33 @@ const routes: RouteRecordRaw[] = [
   //   name: 'HomeOut',
   //   component: () => import('../layouts/MainLayout.vue'),
   // },
-  {
-    path: '/Home',
-    name: 'HomePage',
-    component: () => import('../pages/HomePage.vue'),
-    children: [
-      { path: '/Posts', component: () => import('pages/AddEditPost.vue') },
-    ],
-  },
+  // {
+  //   path: '/Home',
+  //   name: 'HomePage',
+  //   component: () => import('../pages/HomePage.vue'),
+  //   children: [
+  //     { path: '/Posts', component: () => import('pages/AddEditPost.vue') },
+  //   ],
+  // },
 
-  {
-    path: '/Post',
-    name: 'Post',
-    component: () => import('pages/AddEditPost.vue'),
-    //children: [{ path: '/Posts', component: () => import('pages/AddEditPost.vue'), }],
-  },
+  // {
+  //   path: '/Post',
+  //   name: 'Post',
+  //   component: () => import('pages/AddEditPost.vue'),
+  //   //children: [{ path: '/Posts', component: () => import('pages/AddEditPost.vue'), }],
+  // },
 
-  {
-    path: '/Register',
-    component: () => import('components/SignUp.vue'),
-    //children: [{ path: '', component: () => import('pages/IndexPage.vue') }],
-  },
+  // {
+  //   path: '/Register',
+  //   component: () => import('components/SignUp.vue'),
+  //   //children: [{ path: '', component: () => import('pages/IndexPage.vue') }],
+  // },
 
-  {
-    path: '/RegisterUser',
-    name: 'RegisterUser',
-    component: () => import('components/RegisterUser.vue'),
-  },
+  // {
+  //   path: '/RegisterUser',
+  //   name: 'RegisterUser',
+  //   component: () => import('components/RegisterUser.vue'),
+  // },
 
   // {
   //   path: '/Login',
@@ -48,10 +48,17 @@ const routes: RouteRecordRaw[] = [
   },
 
   {
-    path: '/Login',
-    name: 'Login',
-    component: () => import('components/khushPrac/Login.vue'),
+    path: '/post',
+    name: 'PostList',
+    component: () => import('components/khushPrac/PostList.vue'),
+    //children: [{ path: '/Posts', component: () => import('pages/AddEditPost.vue'), }],
   },
+
+  // {
+  //   path: '/Login',
+  //   name: 'Login',
+  //   component: () => import('components/khushPrac/Login.vue'),
+  // },
 
   // {
   //   path: '/ResetPassword',

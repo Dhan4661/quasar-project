@@ -70,7 +70,7 @@
                 </q-card-header>
                 <q-divider></q-divider>
                 <q-card-section>
-                  <q-form @submit="onSubmit" class="q-gutter-md">
+                  <q-form @submit="onRegister" class="q-gutter-md">
                     <q-input
                       filled
                       v-model="fname"
@@ -116,32 +116,51 @@
 //   import HomepageImage from '../components/HomepageImage.vue';
 import { useRouter } from 'vue-router';
 import { ref } from 'vue';
+import { useUserData } from 'src/composables/use-userData';
 
 export default {
   setup() {
-    // const tab = ref(null);
+    const tab = ref('one');
     const email = ref(null);
     const password = ref(null);
-    const router = useRouter();
-    // const { currentUserData } = useUserData();
 
-    // const fname = ref(null);
-    // const lname = ref(null);
-    // const uname = ref(null);
-    // const remail = ref(null);
-    // const password = ref(null);
+    const fname = ref(null);
+    const lname = ref(null);
+    const uname = ref(null);
+
+    const router = useRouter();
+    const { currentUserData } = useUserData();
 
     return {
       tab: ref('one'),
       email,
       password,
+      fname,
+      lname,
+      uname,
       onSubmit() {
         if (email.value == null || password.value == null) {
-          window.alert('Please enter your details');
+          window.alert('Please enter your details !!');
         } else {
           window.alert('Login sucessfully');
+          if (currentUserData.value.email == email.value) {
+            void router.push({ name: 'HomePage' });
+          }
+        }
+      },
+      onRegister() {
+        if (
+          fname.value == null ||
+          lname.value == null ||
+          uname.value == null ||
+          password.value == null
+        ) {
+          window.alert('Please enter your details !!');
+        } else {
+          tab.value = 'one';
+          window.alert('Registered Sucessfully');
           // if (currentUserData.value.email == email.value) {
-          void router.push({ name: 'HomePage' });
+          //   void router.push({ name: 'HomePage' });
           // }
         }
       },
