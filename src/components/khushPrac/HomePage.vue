@@ -16,7 +16,7 @@
     <q-page-container>
       <q-card class="my-card">
         <q-card-section>
-          <div class="text-h6 text-center">Home Page</div>
+          <div class="text-h6 text-center">Welcome to Home Page</div>
           <!-- <div class="text-subtitle2">by John Doe</div> -->
         </q-card-section>
 
@@ -40,8 +40,8 @@
                     <q-input
                       filled
                       v-model="email"
-                      label="Your Email*"
-                      hint="example@gmail.com"
+                      label="Email*"
+                      hint="khushi@gmail.com"
                       lazy-rules
                     />
 
@@ -49,12 +49,12 @@
                       filled
                       type="password"
                       v-model="password"
-                      label="Password"
+                      label="Password*"
                       lazy-rules
                     />
 
                     <div>
-                      <q-btn label="Submit" type="submit" color="primary" />
+                      <q-btn label="Login" type="submit" color="primary" />
                     </div>
                   </q-form>
                 </q-card-section>
@@ -86,19 +86,20 @@
                     <q-input
                       filled
                       v-model="uname"
-                      label="user Name*"
+                      label="Username*"
+                      hint="khushi@gmail.com"
                       lazy-rules
                     />
                     <q-input
                       filled
                       type="password"
                       v-model="password"
-                      label="Password"
+                      label="Password*"
                       lazy-rules
                     />
 
                     <div>
-                      <q-btn label="Submit" type="submit" color="primary" />
+                      <q-btn label="Register" type="submit" color="primary" />
                     </div>
                   </q-form>
                 </q-card-section>
@@ -139,26 +140,24 @@ export default {
       lname,
       uname,
       onSubmit() {
-        if (email.value == null || password.value == null) {
-          window.alert('Please enter your details !!');
+        if (!email.value || !password.value) {
+          window.alert('Please fill the details !!');
         } else {
           window.alert('Login sucessfully');
           if (currentUserData.value.email == email.value) {
             void router.push({ name: 'HomePage' });
           }
+          email.value = null;
+          password.value = null;
         }
       },
       onRegister() {
-        if (
-          fname.value == null ||
-          lname.value == null ||
-          uname.value == null ||
-          password.value == null
-        ) {
-          window.alert('Please enter your details !!');
+        if (!fname.value || !lname.value || !uname.value || !password.value) {
+          window.alert('Please fill the details !!');
         } else {
           tab.value = 'one';
           window.alert('Registered Sucessfully');
+          void router.push({ name: 'HomePage' });
           // if (currentUserData.value.email == email.value) {
           //   void router.push({ name: 'HomePage' });
           // }

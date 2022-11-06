@@ -74,8 +74,6 @@ export default defineComponent({
     const router = useRouter();
     const { currentUserData } = useUserData();
 
-    
-
     return {
       email,
       password,

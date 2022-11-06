@@ -1,8 +1,8 @@
 <template>
-  <!-- <div class="q-pa-md"> -->
+  <div class="q-pa-md">
     <q-btn
       label="View Post"
-      style="margin-right: 20px"
+      style="margin-right: 0px"
       color="primary"
       @click="dialog = true"
     />
@@ -28,43 +28,24 @@
         </q-card-actions>
       </q-card>
     </q-dialog>
-  <!-- </div> -->
+  </div>
 </template>
 
 <script lang="ts" setup>
 import { computed, ref } from 'vue';
-//import { useQuasar } from 'quasar';
 
-//name: 'SinglePost',
-//props: ['post'],
-// props: {
-//   name: {
-//     type: String,
-//     required: true
-//   },
 
-//   description: {
-//     type: String,
-//     default: ''
-//   },
-// },
-
-//const $q = useQuasar();
-
+//Type for prop:post
 interface IProps {
   post: string;
 }
 const props = defineProps<IProps>();
 
 const snippet = computed(() => {
-  // return props.post.description.substring(0, 10000) + '....';
-  return props.post.description;
+  // return props.post.desc.substring(0, 10000) + '....';
+  return props.post.desc;
 });
 
 const dialog = ref(false);
 const cancelEnabled = ref(true);
-// onSubmit() {
-//   window.alert('Post created sucessfully');
-//   void router.push({ name: 'HomePage' });
-// },
 </script>

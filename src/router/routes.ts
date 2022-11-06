@@ -48,7 +48,7 @@ const routes: RouteRecordRaw[] = [
   },
 
   {
-    path: '/post',
+    path: '/PostList',
     name: 'PostList',
     component: () => import('components/khushPrac/PostList.vue'),
     //children: [{ path: '/Posts', component: () => import('pages/AddEditPost.vue'), }],

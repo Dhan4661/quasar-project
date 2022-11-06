@@ -1,5 +1,5 @@
 <template>
-  <!-- <div class="q-pa-md"> -->
+  <div class="q-pa-md">
     <q-btn label="Edit Post" color="primary" @click="dialog = true" />
 
     <q-dialog v-model="dialog" persistent>
@@ -11,7 +11,7 @@
         <q-card-section class="row items-center">
           <q-input
             dense="dense"
-            v-model="postData.description"
+            v-model="postData.desc"
             type="textarea"
             style="min-width: 500px; height: 100% !important"
             outlined="true"
@@ -36,7 +36,7 @@
         </q-card-actions>
       </q-card>
     </q-dialog>
-  <!-- </div> -->
+  </div>
 </template>
 
 <script lang="ts" setup>
@@ -48,20 +48,20 @@ interface IProps {
 const props = defineProps<IProps>();
 
 const postDescription = computed(() => {
-  return props.post.description;
+  return props.post.desc;
 });
 
 const dialog = ref(false);
 const cancelEnabled = ref(true);
 const postData = reactive({
   name: '',
-  description: '',
+  desc: '',
 });
 
 const emit = defineEmits<{ (e: 'on-update', postData: string): void }>();
 
 onMounted(() => {
   postData.name = props.post.name;
-  postData.description = postDescription.value;
+  postData.desc = postDescription.value;
 });
 </script>
