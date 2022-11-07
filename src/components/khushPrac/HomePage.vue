@@ -158,6 +158,15 @@ export default {
           tab.value = 'one';
           window.alert('Registered Sucessfully');
           void router.push({ name: 'HomePage' });
+          fetch('http://localhost:3000/users', {
+               method: 'POST',
+               headers: {'Content-type': 'application/json'},
+               body: JSON.stringify({ 
+                  fname: fname.value,
+                  lname: lname.value,
+                  uname:uname.value,
+                })
+           });
           // if (currentUserData.value.email == email.value) {
           //   void router.push({ name: 'HomePage' });
           // }

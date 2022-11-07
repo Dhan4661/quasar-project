@@ -24,7 +24,7 @@
   </div>
 </template>
   
-  <script>
+<script>
 import { onMounted, onUnmounted, onUpdated } from 'vue';
 import ViewPost from './ViewPost.vue';
 import EditPost from './EditPost.vue';
@@ -80,9 +80,9 @@ export default {
   },
   setup(props) {
     console.log(props);
-    // onMounted(() => console.log('component mounted'));
-    // onUnmounted(() => console.log('component unmounted'));
-    // onUpdated(() => console.log('component updated'));
+    onMounted(() => console.log('component mounted'));
+    onUnmounted(() => console.log('component unmounted'));
+    onUpdated(() => console.log('component updated'));
 
     return {
       postLinks: postsList,

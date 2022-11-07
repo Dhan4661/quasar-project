@@ -15,7 +15,6 @@ const mutations: MutationTree<IAuth> & Mutations = {
     state: IAuth,
     payload: IAuth['currentUserData']
   ) {
-    debugger;
     state.currentUserData = payload;
   },
 };

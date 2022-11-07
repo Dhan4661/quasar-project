@@ -41,19 +41,27 @@ const routes: RouteRecordRaw[] = [
   // },
 
   //khush prac
-  {
-    path: '/',
-    name: 'HomePage',
-    component: () => import('components/khushPrac/HomePage.vue'),
-  },
+  // {
+  //   path: '/',
+  //   name: 'HomePage',
+  //   component: () => import('components/khushPrac/HomePage.vue'),
+  // },
 
   {
-    path: '/PostList',
+    path: '/',
     name: 'PostList',
     component: () => import('components/khushPrac/PostList.vue'),
     //children: [{ path: '/Posts', component: () => import('pages/AddEditPost.vue'), }],
   },
 
+  // {
+  //   path: '/',
+  //   name: 'AddPost',
+  //   component: () => import('components/khushPrac/AddPost.vue'),
+  //   //children: [{ path: '/Posts', component: () => import('pages/AddEditPost.vue'), }],
+  // },
+
+  
   // {
   //   path: '/Login',
   //   name: 'Login',

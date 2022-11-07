@@ -47,6 +47,10 @@ interface IProps {
 }
 const props = defineProps<IProps>();
 
+  const postName = computed(() => {
+  return props.post.name;
+});
+
 const postDescription = computed(() => {
   return props.post.description;
 });
@@ -61,7 +65,7 @@ const postData = reactive({
 const emit = defineEmits<{ (e: 'on-update', postData: string): void }>();
 
 onMounted(() => {
-  postData.name = props.post.name;
+  postData.name = postName.value;
   postData.description = postDescription.value;
 });
 </script>
