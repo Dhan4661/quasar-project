@@ -9,7 +9,7 @@
       </template>
     </simple-table> -->
 
-    <q-table
+    <!-- <q-table
       :rows="tableData"
       :columns="columns.columns"
       row-key="sku"
@@ -185,7 +185,7 @@
           v-else
         ></NoDataSlot>
       </template>
-    </q-table>
+    </q-table> -->
 
     <q-list bordered separator>
       <q-item v-for="post in postLinks" :key="post.name" v-bind="post">
@@ -211,7 +211,7 @@
   
 <script>
 import { onMounted, onUnmounted, onUpdated } from 'vue';
-import { useServerTable } from 'src/composables/use-server-table';
+// import { useServerTable } from 'src/composables/use-server-table';
 import ViewPost from './ViewPost.vue';
 import EditPost from './EditPost.vue';
 
