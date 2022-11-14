@@ -47,6 +47,7 @@ export const useServerTable = (
   };
 
   const fetchFromServer = (): Promise<unknown> => {
+    debugger;
     return new Promise((resolve, reject) => {
       loading.value = true;
       store

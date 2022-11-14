@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div class="q-pa-md">
     <q-table
       title="Server Table Demo"
@@ -158,5 +158,35 @@ export default {
     };
   },
 };
+</script> -->
+
+<template>
+  <div class="q-pa-md" style="max-width: 350px">
+    <q-table
+      :rows="tableData"
+      row-key="sku"
+      v-model:pagination="pagination"
+      hide-pagination
+      :loading="loading"
+      @request="onRequest"
+      flat
+      class="sf-table pur-report"
+      binary-state-sort
+    >
+    </q-table>
+  </div>
+</template>
+<script  lang="ts" setup>
+import { useServerTable } from '../../../src/composables/use-server-table';
+const { loading, pagination, tableData, onRequest } = useServerTable(
+  'myAccount',
+  'rows',
+  'purchaseTableData',
+  '/account/purchasereports',
+  'SET_PURCHASE_TABLE_DATA',
+  true,
+  true
+);
 </script>
+
   
