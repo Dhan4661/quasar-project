@@ -47,10 +47,17 @@ const routes: RouteRecordRaw[] = [
   //   component: () => import('components/khushPrac/HomePage.vue'),
   // },
 
+  // {
+  //   path: '/',
+  //   name: 'PostList',
+  //   component: () => import('components/khushPrac/PostList.vue'),
+  //   //children: [{ path: '/Posts', component: () => import('pages/AddEditPost.vue'), }],
+  // },
+
   {
     path: '/',
-    name: 'PostList',
-    component: () => import('components/khushPrac/PostList.vue'),
+    name: 'ProductListing',
+    component: () => import('components/khushPrac/ProductListing.vue'),
     //children: [{ path: '/Posts', component: () => import('pages/AddEditPost.vue'), }],
   },
 
@@ -61,7 +68,6 @@ const routes: RouteRecordRaw[] = [
   //   //children: [{ path: '/Posts', component: () => import('pages/AddEditPost.vue'), }],
   // },
 
-  
   // {
   //   path: '/Login',
   //   name: 'Login',
