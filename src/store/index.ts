@@ -6,8 +6,11 @@ import {
   useStore as vuexUseStore,
 } from 'vuex';
 import auth from './auth';
+import product from './product';
 
 import { IAuth } from './auth/auth';
+import { IProduct } from './product/product';
+import VuexPersistence from 'vuex-persist';
 
 // import example from './module-example'
 // import { ExampleStateInterface } from './module-example/state';
@@ -24,6 +27,7 @@ import { IAuth } from './auth/auth';
 export interface IRootState {
   // Define your own store structure, using submodules if needed
   auth: IAuth;
+  product: IProduct;
   // example: unknown;
 }
 
@@ -44,13 +48,33 @@ declare module '@vue/runtime-core' {
 // provide typings for `useStore` helper
 export const storeKey: InjectionKey<VuexStore<IRootState>> = Symbol('vuex-key');
 
+// export default store(function (/* { ssrContext } */) {});
+
+  // const Store = createStore<IRootState>({
+  //   modules: {
+  //     // example
+  //     auth,
+  //     product,
+  //   },
+
+  //   // enable strict mode (adds overhead!)
+  //   // for dev mode and --debug builds only
+  //   strict: !!process.env.DEBUGGING,
+  // });
+
+  // return Store;
+
 export default store(function (/* { ssrContext } */) {
+  const vuexPersist = new VuexPersistence({
+    key: 'sf-ecommerce',
+    storage: localStorage,
+  });
   const Store = createStore<IRootState>({
     modules: {
-      // example
       auth,
+     product
     },
-
+    plugins: [vuexPersist.plugin],
     // enable strict mode (adds overhead!)
     // for dev mode and --debug builds only
     strict: !!process.env.DEBUGGING,

@@ -5,6 +5,9 @@ import { useStore } from 'src/store';
 import { ref, onMounted, computed, reactive } from 'vue';
 import { QTableProps } from 'quasar';
 import { useErrors } from 'src/composables/use-errors';
+import { IPost } from 'src/store/product/product';
+import { resolve } from 'dns';
+import { rejects } from 'assert';
 
 export const useServerTable = (
   storeName: string,
@@ -14,6 +17,7 @@ export const useServerTable = (
   mutationName = '',
   isInitialCall = true,
   isDefaultAll = false,
+
   defaultFilter: IFilterModel & AnyObject = {
     search: '',
     from: '',
@@ -46,8 +50,25 @@ export const useServerTable = (
     }
   };
 
+//   const fetchPost = (): Promise<IPost>=>{
+//     return new Promise((resolve, reject)=>{
+// store.dispatch(`product/GET_POSTS`).then(response)=>{
+//   loading.value = false;
+//   if (promiseOnly) {
+//     resolve(response);
+//   } else {
+//     setData(response);
+//   }
+// }  (error) => {
+//   loading.value = false;
+//   setData({ [responseKey]: [] });
+//   reject(error);
+//   showDialog(getServerErrors(error));
+// }
+//     });
+//   }
+
   const fetchFromServer = (): Promise<unknown> => {
-    debugger;
     return new Promise((resolve, reject) => {
       loading.value = true;
       store

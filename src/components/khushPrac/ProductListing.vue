@@ -163,7 +163,7 @@ export default {
 <template>
   <div class="q-pa-md" style="max-width: 350px">
     <q-table
-      :rows="tableData"
+      :rows="localState.post"
       row-key="sku"
       v-model:pagination="pagination"
       hide-pagination
@@ -178,6 +178,10 @@ export default {
 </template>
 <script  lang="ts" setup>
 import { useServerTable } from '../../../src/composables/use-server-table';
+import { useStore } from 'src/store';
+import { IPost } from 'src/store/product/product';
+import { ref, reactive, onMounted } from 'vue';
+
 const { loading, pagination, tableData, onRequest } = useServerTable(
   'myAccount',
   'rows',
@@ -187,6 +191,31 @@ const { loading, pagination, tableData, onRequest } = useServerTable(
   true,
   true
 );
+const store = useStore();
+// const posts = ref(<IPost>);
+const localState = reactive({
+  post: <IPost>{},
+});
+const fetchFromServer = (): Promise<unknown> => {
+  return new Promise((resolve, reject) => {
+    loading.value = true;
+    store.dispatch(`product\posts`).then(
+      (response) => {
+        localState.post = response;
+        loading.value = false;
+      },
+      (error) => {
+        loading.value = false;
+        reject(error);
+        // showDialog(getServerErrors(error));
+      }
+    );
+  });
+};
+
+onMounted(() => {
+  fetchFromServer();
+});
 </script>
 
   
