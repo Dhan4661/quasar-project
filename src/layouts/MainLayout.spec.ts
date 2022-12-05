@@ -39,9 +39,9 @@ describe('Routing', () => {
     async ({ initialPath, onClick, visiblePage }) => {
       await setup(initialPath);
       const link =  screen.queryByRole('link', { name: onClick })  ;
+      console.log('link',link);
       if (link) {
         await userEvent.click(link);
-        console.log(link);
         const page = await screen.findByTestId(visiblePage);
         expect(page).toBeInTheDocument();
       }
