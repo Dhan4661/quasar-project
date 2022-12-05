@@ -85,6 +85,7 @@ export default defineComponent({
           window.alert('Please enter your details');
         } else {
           window.alert('Login sucessfully');
+          void router.push({ name: 'HomePage' });
           if (currentUserData.value.email == email.value) {
             void router.push({ name: 'HomePage' });
           }

@@ -23,7 +23,6 @@ const setup = async (path: string) => {
     async ({ initialPath, onClick, visiblePage }) => {
       await setup(initialPath);
       //const signup = screen.getByTestId('signup');
-      debugger;
       const link =  screen.getByTestId(onClick)  ;
       console.log('link',visiblePage);
       if (link) {

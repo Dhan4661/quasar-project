@@ -188,7 +188,6 @@ export default defineComponent({
             stateObject.isSubmitting = false;
             console.log(error);
             //window.alert('You need to accept the license and terms first');
-            debugger;
             //get.localstorage
             let stateParamModel = {
               email: values.email,
