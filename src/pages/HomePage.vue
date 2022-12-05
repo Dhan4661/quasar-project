@@ -56,9 +56,9 @@
               <div>Please find below your post list</div>
               <PostList />
             </q-card-section>
-             <q-card-section>
+             <!-- <q-card-section>
               <serverTableListing />
-            </q-card-section>
+            </q-card-section> -->
           </q-card>
         </div>
       </div>
@@ -73,7 +73,7 @@ import { ref, computed } from 'vue';
 import EssentialLink from 'components/EssentialLink.vue';
 import PostList from '../components/PostList.vue';
 
-import serverTableListing from '../components/serverTableListing.vue';
+// import serverTableListing from '../components/serverTableListing.vue';
 import { useStore } from 'src/store';
 //import { MutationTypes } from 'src/store/auth/mutation-types';
 
