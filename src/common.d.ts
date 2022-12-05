@@ -41,6 +41,10 @@ export interface IFilterModel {
   reportType?: string;
 }
 
+export interface IDummyData {
+  asset_collector_ignore : [],
+}
+
 export type SetFieldValue = (
   field: string,
   value: AnyObject | string | number | boolean

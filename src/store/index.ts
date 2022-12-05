@@ -7,7 +7,12 @@ import {
 } from 'vuex';
 import auth from './auth';
 
+import myAccount from './my-account';
+
 import { IAuth } from './auth/auth';
+
+import { IMyAccount } from './my-account/my-account';
+
 
 // import example from './module-example'
 // import { ExampleStateInterface } from './module-example/state';
@@ -25,6 +30,8 @@ import { IAuth } from './auth/auth';
 export interface IRootState {
   // Define your own store structure, using submodules if needed
   auth: IAuth;
+
+  myAccount: IMyAccount;
   // example: unknown;
 }
 
@@ -51,6 +58,7 @@ export default store(function (/* { ssrContext } */) {
     modules: {
       // example
       auth,
+      myAccount,
     },
 
     // enable strict mode (adds overhead!)
